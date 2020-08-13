@@ -11,15 +11,33 @@
                         <form method="POST" action="/threads">
                             @csrf
                             <div class="form-group">
+                                <label>Channel</label>
+                                <select class="form-control" name="channel_id" required>
+                                    <option value="">Select one...</option>
+                                    @foreach($channels as $channel)
+                                        <option value="{{ $channel->id }}" @if(old('channel_id') == $channel->id)selected @endif>{{ $channel->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label>Title</label>
-                                <input type="text" name="title" class="form-control"></input>
+                                <input type="text" name="title" class="form-control" value="{{ old('title') }}" required></input>
                             </div>
                             <div class="form-group">
                                 <label>Body</label>
-                                <textarea name="body" class="form-control" rows="8"></textarea>
+                                <textarea name="body" class="form-control" rows="8" required>{{ old('body') }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Publish</button>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Publish</button>
+                            @if(count($errors))
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </form>
                     </div>
                 </div>
