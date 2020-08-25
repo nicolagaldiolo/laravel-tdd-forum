@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Channel;
+use App\Filters\ThreadFilters;
 use App\Thread;
 use App\User;
 use Illuminate\Http\Request;
@@ -21,21 +22,11 @@ class ThreadsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Channel $channel)
+    public function index(Channel $channel, ThreadFilters $filters)
+        // ThreadFilters è un instanza della classe ThreadFilters che viene iniettata con la dependency injection
     {
-        if($channel->exists){
-            $threads = $channel->threads();
-        }else{
-            $threads = Thread::query();
-        }
 
-        if(request('by')){
-            $user = User::where('name', request('by'))->firstOrFail();
-            $threads->whereUserId($user->id);
-        }
-
-        $threads = $threads->latest()->get();
-
+        $threads = $this->getThreads($channel, $filters);
 
         return view('threads.index', compact('threads'));
     }
@@ -51,6 +42,7 @@ class ThreadsController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -119,5 +111,23 @@ class ThreadsController extends Controller
     public function destroy(Thread $thread)
     {
         //
+    }
+
+    /**
+     * @param ThreadFilters $filters
+     * @param Channel $channel
+     * @return mixed
+     */
+    protected function getThreads(Channel $channel, ThreadFilters $filters)
+    {
+
+        $threads = Thread::latest()->filter($filters); // filter è un metodo del modello (queryScope) al quale passo l'instanza della classe ThreadFilters
+
+        if ($channel->exists) {
+            $threads->whereChannelId($channel->id);
+        }
+
+        $threads = $threads->get();
+        return $threads;
     }
 }
