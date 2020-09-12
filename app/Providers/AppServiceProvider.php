@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Channel;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 
@@ -39,8 +40,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('channels', Channel::all());
         });*/
 
+
         \View::composer('*', function($view){
-            $view->with('channels', Channel::all());
+            $view->with('channels', Cache::rememberForever('channels', function (){
+                return Channel::all();
+            }));
             // in questo modo non ho problemi con i test in quanto la query viene lanciata ogni volta che
             // viene renderizzata una view
         });

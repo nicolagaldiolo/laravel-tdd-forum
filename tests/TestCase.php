@@ -18,6 +18,13 @@ abstract class TestCase extends BaseTestCase
 
         $this->withoutExceptionHandling(); // Se voglio disabilitare la gestione delle eccezzioni da parte del framework
         //$this->withExceptionHandling(); // Se voglio abilitare la gestione delle eccezzioni da parte del framework
+
+        // ad esempio per l'autenticazione, se tento di accedere a qualcosa protetto da auth e non solo loggato
+            // se HO abilitato la gestione delle eccezzioni non ricevo alcun errore, il sistema non lancia eccezzioni e vengo rediretto alla pagina di login
+            // quindi devo controllare se effettivamente vengo rediretto in home
+
+            // se NON HO abilitato la gestione delle eccezzioni, il sistema lancia eccezzione di utente non autenticato
+            // quindi devo controllare se ricevo questo tipo di eccezzione
     }
 
     // Helper custom per creazione dell'utente

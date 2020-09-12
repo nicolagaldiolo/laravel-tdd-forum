@@ -56,4 +56,65 @@ class PartecipateInFormTest extends TestCase
         $this->post($thread->path() . '/replies', $reply->toArray())
             ->assertSessionHasErrors('body');
     }
+
+    function testUnauthorizedUsersCannotDeleteReplies()
+    {
+        $this->withExceptionHandling();
+
+        $reply = create(Reply::class);
+
+        $this->delete('/replies/' . $reply->id)
+            ->assertRedirect('login');
+
+        $reply = create(Reply::class);
+
+        $this->signIn();
+
+        $this->delete('/replies/' . $reply->id)
+            ->assertStatus(403);
+    }
+
+    function testAuthorizedUsersCanDeleteReplies()
+    {
+        $this->withExceptionHandling();
+
+        $this->signIn();
+
+        $reply = create(Reply::class, ['user_id' => Auth::id()]);
+
+        $this->delete('/replies/' . $reply->id)
+            ->assertStatus(302);
+
+        $this->assertDatabaseMissing('replies', ['id' => $reply->id]);
+    }
+
+    function testUnauthorizedUsersCannotUpdateReplies()
+    {
+        $this->withExceptionHandling();
+
+        $reply = create(Reply::class);
+
+        $this->patch("/replies/{$reply->id}")
+            ->assertRedirect('login');
+
+        $this->signIn();
+
+        $this->patch("/replies/{$reply->id}")
+            ->assertStatus(403);
+
+    }
+
+    function testAuthorizedUsersCanUpdateReplies()
+    {
+
+        $this->signIn();
+
+        $reply = create(Reply::class, ['user_id' => Auth::id()]);
+
+        $updatedReply = 'You been changed, fool.';
+
+        $this->patch("/replies/{$reply->id}", ['body' => $updatedReply]);
+
+        $this->assertDatabaseHas('replies', ['id' => $reply->id, 'body' => $updatedReply]);
+    }
 }

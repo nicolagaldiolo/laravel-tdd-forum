@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Channel;
+use App\Reply;
 use App\Thread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,11 +22,43 @@ class RepliesController extends Controller
            'body' => 'required'
         ]);
 
-        $thread->addReply([
+        $reply = $thread->addReply([
             'body' => request('body'),
             'user_id' => Auth::id()
         ]);
 
-        return back();
+        if(request()->expectsJson()){
+            return $reply->load('owner');
+        }
+
+        return back()->with('flash', 'Your reply has been left.');
+    }
+
+    public function update(Reply $reply)
+    {
+
+        $this->authorize('update', $reply);
+
+        $this->validate(\request(), [
+            'body' => 'required'
+        ]);
+
+        $reply->update(request()->only('body'));
+
+    }
+
+    public function destroy(Reply $reply)
+    {
+
+        $this->authorize('update', $reply);
+
+        $reply->delete();
+
+        if(request()->expectsJson()){
+            return response(['status' => 'Reply deleted']);
+        }
+
+        return redirect()->back();
+
     }
 }

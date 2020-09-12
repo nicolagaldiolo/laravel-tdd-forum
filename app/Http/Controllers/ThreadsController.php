@@ -28,6 +28,10 @@ class ThreadsController extends Controller
 
         $threads = $this->getThreads($channel, $filters);
 
+        if(request()->wantsJson()){
+            return $threads;
+        }
+
         return view('threads.index', compact('threads'));
     }
 
@@ -64,7 +68,8 @@ class ThreadsController extends Controller
             'body' => request('body'),
         ]);
 
-        return redirect($thread->path());
+        return redirect($thread->path())
+            ->with('flash', 'Your thread has been published!');
 
     }
 
@@ -76,7 +81,10 @@ class ThreadsController extends Controller
      */
     public function show(Channel $channel, Thread $thread)
     {
-        return view('threads.show', compact('thread'));
+
+        $replies =  $thread->replies()->paginate(5);
+
+        return view('threads.show', compact('thread', 'replies'));
     }
 
     /**
@@ -108,9 +116,20 @@ class ThreadsController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy(Channel $channel, Thread $thread)
     {
-        //
+        // Autorizzo la richiesta
+        $this->authorize('update', $thread);
+
+        // Cancello da risorsa
+        $thread->delete();
+
+        // Ritorno la risposta
+        if(request()->wantsJson()){
+            return response([], 204);
+        }
+
+        return redirect('/threads');
     }
 
     /**

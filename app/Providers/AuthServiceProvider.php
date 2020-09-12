@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +26,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Aggiungo un gate generico che se l'utente è nicola può effettuare qualsiasi operazione
+        //Gate::before(function (User $user){
+        //    if($user->name == 'Nicola'){
+        //        return true;
+        //    }
+        //});
     }
 }
