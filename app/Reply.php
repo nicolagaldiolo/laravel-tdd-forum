@@ -18,6 +18,20 @@ class Reply extends Model
 
     protected $appends = ['favoritesCount', 'isFavorited'];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        // sfuttando il model event ho la certezza che il campo viene aggiornato sia se lancio una factory sia dal normale flow
+        static::created(function ($reply){
+            $reply->thread->increment('replies_count');
+        });
+
+        static::deleted(function ($reply){
+            $reply->thread->decrement('replies_count');
+        });
+    }
+
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');

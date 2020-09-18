@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Notifications\ThreadWasUpdated;
+use Hamcrest\Thingy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,14 +16,17 @@ class Thread extends Model
 
     protected $with = ['creator', 'channel'];
 
+    protected $appends = ['isSubscribedTo'];
+
     protected static function boot()
     {
 
         parent::boot();
 
-        static::addGlobalScope('replyCount', function($builder){
-            $builder->withCount('replies');
-        });
+        // NON SERVE PIù ESEGUIRE LA QUERY SULLA RELAZIONE REPLIES IN QUANTO HO CREATO LA COLONNA AD HOC
+        //static::addGlobalScope('replyCount', function($builder){
+        //    $builder->withCount('replies');
+        //});
 
         // Ascolto la cancellazione del modello per cancellare tutte le "dipendenze"
         // posso farlo direttamente a db o gestirlo da programma
@@ -65,12 +70,44 @@ class Thread extends Model
 
     public function addReply($reply)
     {
-        return $this->replies()->create($reply);
+        $reply = $this->replies()->create($reply);
+
+        // Controllo di non inviare notifiche a me stesso iscritto ma sono l'autore della risposta
+        // Si potrebbe sfruttare anche il metodo notifyOther() ?????
+        $this->subscriptions->filter(function($sub) use($reply){
+            return $sub->user_id != $reply->user_id;
+        })->each->notify($reply);
+
+        return $reply;
     }
 
     public function scopeFilter($query, $filters)
     {
         // lancio il metodo apply della classe ThreadFilters passandogli il query builder
         return $filters->apply($query);
+    }
+
+    public function subscribe($userId = null)
+    {
+        $this->subscriptions()->create([
+            'user_id' => $userId ?: Auth::id()
+        ]);
+
+        return $this;
+    }
+
+    public function unsubscribe($userId = null)
+    {
+        $this->subscriptions()->where('user_id', $userId ?: Auth::id())->delete();
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(ThreadSubscription::class);
+    }
+
+    public function getIsSubscribedToAttribute()
+    {
+        return $this->subscriptions()->where('user_id', Auth::id())->exists();
     }
 }

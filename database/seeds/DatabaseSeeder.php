@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Thread;
 use App\Reply;
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +16,20 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UserSeeder::class);
 
-        factory(Thread::class, 50)->create()->each(function ($thread){
+        factory(User::class, 1)->create([
+            'name' => 'Nicola',
+            'email' => 'galdiolo.nicola@gmail.com'
+        ])->each(function ($user){
+            factory(Thread::class, 10)->create([
+                'user_id' => $user->id
+            ])->each(function ($thread){
+                factory(Reply::class, 10)->create([
+                    'thread_id' => $thread->id
+                ]);
+            });
+        });
+
+        factory(Thread::class, 40)->create()->each(function ($thread){
             factory(Reply::class, 10)->create([
                 'thread_id' => $thread->id
             ]);

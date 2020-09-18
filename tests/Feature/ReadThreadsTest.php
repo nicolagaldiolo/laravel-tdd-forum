@@ -55,8 +55,10 @@ class ReadThreadsTest extends TestCase
 
         $reply = create(Reply::class, ['thread_id' => $this->thread->id]);
 
-        $this->get($this->thread->path())
-            ->assertSee($reply->body);
+        // Il contenuto viene caricato via JS quindi non posso basarmi sul fatto che il contenuto è visibile in pagina
+        //$this->get($this->thread->path())->assertSee($reply->body);
+
+        $this->assertDatabaseHas('replies', ['body' => $reply->body]);
     }
 
     public function testAUserCanFilterThreadsAccordingToAChannel()
@@ -98,4 +100,30 @@ class ReadThreadsTest extends TestCase
 
         $this->assertEquals([3,2,0], array_column($response, 'replies_count'));
     }
+
+    public function testAUserCanFilterThreadsByThoseThatAreUnanswered()
+    {
+        // Un thread viene creato di default (metodo setUp) per ogni test quindi uno è già presente
+
+        // Creo un altro test ma a questo associo una risposta
+        $thread = create(Thread::class);
+        create(Reply::class, ['thread_id' => $thread->id], 1);
+
+        $response = $this->getJson('threads?unanswered=1')->json();
+
+        $this->assertCount(1, $response);
+    }
+
+    public function testAUserCanRequestAllRepliesForAGivenThread()
+    {
+        $thread = create(Thread::class);
+
+        create(Reply::class, ['thread_id' => $thread->id], 2);
+
+        $response = $this->getJson($thread->path() . '/replies')->json();
+
+        $this->assertCount(2, $response['data']);
+        $this->assertEquals(2, $response['total']);
+    }
+
 }
