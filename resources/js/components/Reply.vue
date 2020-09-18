@@ -7,7 +7,7 @@
             <a :href="'/profiles/' + data.owner.name"
                v-text="data.owner.name">
 
-            </a> said {{ data.created_at }}...
+            </a> said <span v-text="ago"></span>
           </h5>
 
           <favorite v-if="signedIn" :reply="data"></favorite>
@@ -37,6 +37,7 @@
 <script>
 
     import Favorite from './Favorite.vue';
+    import moment from 'moment';
 
     export default {
       props: [ 'data'],
@@ -52,6 +53,9 @@
       },
 
       computed: {
+        ago() {
+          return moment(this.data.created_at).fromNow() + '...';
+        },
         signedIn() {
           return window.App.signedIn;
         },

@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\User;
+use Hamcrest\Thingy;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -61,4 +62,47 @@ class ThreadTest extends TestCase
     {
         $this->assertInstanceOf(Channel::class, $this->thread->channel);
     }
+
+    public function testAThreadCanBeSubscribedTo()
+    {
+        // Dato un thread (creato con il metodo setUp())
+
+        // e un utente autenticato
+        $this->signIn();
+
+        // quando l'utente si iscrive ad un tread
+        $this->thread->subscribe($userId = 1);
+
+        // poi l'utente dovrebbe essere in grado di recuperare tutti i tread al qualche si è iscritto
+        $this->assertEquals(1, $this->thread->subscriptions()->where('user_id', $userId)->count());
+    }
+
+    public function testAThreadCanBeUnSubscribedFrom()
+    {
+        // Dato un thread (creato con il metodo setUp())
+
+        // e un utente autenticato
+        $this->signIn();
+
+        // l'utente si iscrive ad un tread
+        $this->thread->subscribe($userId = 1);
+
+        // l'utente si rimuove dalla sottoscrizione ad un tread
+        $this->thread->unsubscribe($userId);
+
+        // poi l'utente dovrebbe essere in grado di recuperare tutti i tread al qualche si è iscritto
+        $this->assertCount(0, $this->thread->subscriptions);
+    }
+
+    public function testItKnowIfTheAuthenticatedUserIsSubscribedTo()
+    {
+        $this->signIn();
+
+        $this->assertFalse($this->thread->isSubscribedTo);
+
+        $this->thread->subscribe();
+
+        $this->assertTrue($this->thread->isSubscribedTo);
+    }
+
 }

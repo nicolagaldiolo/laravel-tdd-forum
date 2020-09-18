@@ -26,9 +26,7 @@
 
                 <hr>
 
-                <replies :data="{{ $thread->replies }}"
-                         @added="repliesCount++"
-                         @removed="repliesCount--"></replies>
+                <replies @added="repliesCount++" @removed="repliesCount--"></replies>
 
 
             </div>
@@ -40,6 +38,11 @@
                             This threads was published {{ $thread->created_at->diffForHumans() }} by
                             <a href="#">{{ $thread->creator->name }}</a>, and currently
                             has <span v-text="repliesCount"></span> {{ Str::plural('comment', $thread->replies_count) }}.
+
+                            <div class="mt-2">
+                                <subscribe-button :active="{{ json_encode($thread->isSubscribedTo) }}"/>
+                            </div>
+
                         </p>
                     </div>
                 </div>

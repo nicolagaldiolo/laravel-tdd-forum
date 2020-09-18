@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
-class PartecipateInFormTest extends TestCase
+class PartecipateInThreadsTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -23,20 +23,26 @@ class PartecipateInFormTest extends TestCase
 
     function testAnAuthenticatedUserMayPartecipateInForumThreads()
     {
-        // Given we have a authenticated user
+        // Dato un utente autenticato
         $this->signIn();
 
-        // And an Existing thread
+        // Creo un tread
         $thread = create(Thread::class);
 
-        // When the user adds a reply to the thread
+        // Creo un instanza di risposta (è solo in memoria, non è persistente in quanto fatto un make)
         $reply = make(Reply::class);
 
-        // Then their reply should be included on the page
+        // Posto la risposta (a questo punto è persistente)
         $this->post($thread->path() . '/replies', $reply->toArray());
 
-        $this->get($thread->path())
-            ->assertSee($reply->body);
+        // Mi aspetto di trovarla a db
+        $this->assertDatabaseHas('replies', ['body' => $reply->body]);
+
+        // Chiamo il metodo fresh() in quanto l'istanza non è aggiornata
+        $this->assertEquals(1, $thread->fresh()->replies_count);
+
+        // Il contenuto viene caricato via JS quindi non posso basarmi sul fatto che il contenuto è visibile in pagina
+        //$this->get($thread->path())->assertSee($reply->body);
     }
 
     function testAReplyRequiresABody()
@@ -86,6 +92,8 @@ class PartecipateInFormTest extends TestCase
             ->assertStatus(302);
 
         $this->assertDatabaseMissing('replies', ['id' => $reply->id]);
+
+        $this->assertEquals(0, $reply->thread->fresh()->replies_count);
     }
 
     function testUnauthorizedUsersCannotUpdateReplies()

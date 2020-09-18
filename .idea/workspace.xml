@@ -2,34 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc74aa90-7a0d-4e22-a3fc-29776b41d634" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/forum.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/forum.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Filters/ThreadFilters.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filters/ThreadFilters.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RepliesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RepliesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ThreadsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ThreadsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Reply.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Reply.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Thread.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Thread.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_08_080400_create_threads_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_08_080400_create_threads_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/threads/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/threads/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/threads/reply.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/threads/reply.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/NewReply.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NewReply.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Replies.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Replies.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Reply.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Reply.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Threads.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Threads.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/threads/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/threads/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/CreateThreadTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/CreateThreadTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/PartecipateInFormTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/PartecipateInFormTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/PartecipateInFormTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/PartecipateInThreadsTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/ReadThreadsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ReadThreadsTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/utilities/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/utilities/function.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/ThreadTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ThreadTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,25 +198,25 @@
       <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.FavoriteTest.testAuthenticatedUserCanUnfavoriteAReply">
-    <configuration name="FavoriteTest.testAuthenticatedUserCanUnfavoriteAReply" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\FavoriteTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/FavoriteTest.php" method="testAuthenticatedUserCanUnfavoriteAReply" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.NotificationTest.testAUserCanFetchTheirNotification">
+    <configuration name="NotificationTest.testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReply" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\NotificationTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/NotificationTest.php" method="testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReply" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PartecipateInFormTest.testAuthorizedUsersCanDeleteReplies" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\PartecipateInFormTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PartecipateInFormTest.php" method="testAuthorizedUsersCanDeleteReplies" scope="Method" />
+    <configuration name="NotificationTest.testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReplyThatIsNotByTheCurrentUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\NotificationTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/NotificationTest.php" method="testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReplyThatIsNotByTheCurrentUser" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PartecipateInFormTest.testAuthorizedUsersCanUpdateReplies" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\PartecipateInFormTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PartecipateInFormTest.php" method="testAuthorizedUsersCanUpdateReplies" scope="Method" />
+    <configuration name="NotificationTest.testAUserCanClearANotification" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\NotificationTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/NotificationTest.php" method="testAUserCanClearANotification" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PartecipateInFormTest.testUnauthorizedUsersCannotDeleteReplies" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\PartecipateInFormTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PartecipateInFormTest.php" method="testUnauthorizedUsersCannotDeleteReplies" scope="Method" />
+    <configuration name="NotificationTest.testAUserCanFetchTheirNotification" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\NotificationTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/NotificationTest.php" method="testAUserCanFetchTheirNotification" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PartecipateInFormTest.testUnauthorizedUsersCannotUpdateReplies" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\PartecipateInFormTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PartecipateInFormTest.php" method="testUnauthorizedUsersCannotUpdateReplies" scope="Method" />
+    <configuration name="SubscribeToThreadsTest.testAUserCanSubscribeToThreads" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\SubscribeToThreadsTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/SubscribeToThreadsTest.php" method="testAUserCanSubscribeToThreads" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -231,19 +225,19 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.phpunit.xml" />
-      <item itemvalue="PHPUnit.PartecipateInFormTest.testUnauthorizedUsersCannotDeleteReplies" />
-      <item itemvalue="PHPUnit.PartecipateInFormTest.testAuthorizedUsersCanDeleteReplies" />
-      <item itemvalue="PHPUnit.PartecipateInFormTest.testUnauthorizedUsersCannotUpdateReplies" />
-      <item itemvalue="PHPUnit.PartecipateInFormTest.testAuthorizedUsersCanUpdateReplies" />
-      <item itemvalue="PHPUnit.FavoriteTest.testAuthenticatedUserCanUnfavoriteAReply" />
+      <item itemvalue="PHPUnit.SubscribeToThreadsTest.testAUserCanSubscribeToThreads" />
+      <item itemvalue="PHPUnit.NotificationTest.testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReply" />
+      <item itemvalue="PHPUnit.NotificationTest.testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReplyThatIsNotByTheCurrentUser" />
+      <item itemvalue="PHPUnit.NotificationTest.testAUserCanClearANotification" />
+      <item itemvalue="PHPUnit.NotificationTest.testAUserCanFetchTheirNotification" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.FavoriteTest.testAuthenticatedUserCanUnfavoriteAReply" />
-        <item itemvalue="PHPUnit.PartecipateInFormTest.testAuthorizedUsersCanUpdateReplies" />
-        <item itemvalue="PHPUnit.PartecipateInFormTest.testUnauthorizedUsersCannotUpdateReplies" />
-        <item itemvalue="PHPUnit.PartecipateInFormTest.testAuthorizedUsersCanDeleteReplies" />
-        <item itemvalue="PHPUnit.PartecipateInFormTest.testUnauthorizedUsersCannotDeleteReplies" />
+        <item itemvalue="PHPUnit.NotificationTest.testAUserCanFetchTheirNotification" />
+        <item itemvalue="PHPUnit.NotificationTest.testAUserCanClearANotification" />
+        <item itemvalue="PHPUnit.NotificationTest.testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReplyThatIsNotByTheCurrentUser" />
+        <item itemvalue="PHPUnit.NotificationTest.testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReply" />
+        <item itemvalue="PHPUnit.SubscribeToThreadsTest.testAUserCanSubscribeToThreads" />
       </list>
     </recent_temporary>
   </component>
@@ -268,7 +262,9 @@
       <workItem from="1599726011968" duration="32925000" />
       <workItem from="1599900802098" duration="5386000" />
       <workItem from="1599908158367" duration="411000" />
-      <workItem from="1599908584212" duration="1161000" />
+      <workItem from="1599908584212" duration="2664000" />
+      <workItem from="1600073765206" duration="6554000" />
+      <workItem from="1600229529030" duration="18960000" />
     </task>
     <servers />
   </component>
@@ -292,17 +288,24 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="184" y="123" width="1071" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1597308203240" />
-    <state x="1035" y="542" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599905195537">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="582" y="344" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600236438425">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="582" y="344" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600236438425" />
     <state x="1035" y="542" key="#com.intellij.fileTypes.FileTypeChooser/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599905195537" />
-    <state x="1109" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596882040275">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="533" y="184" key="#com.intellij.ide.util.MemberChooser" timestamp="1600407079461">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="533" y="184" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600407079461" />
+    <state x="545" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600232227745">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="545" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600232227745" />
     <state x="1109" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1596882040275" />
-    <state x="1018" y="493" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598776800946">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600409285725">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600409285725" />
     <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.877@0.23.1440.877" timestamp="1597224498477" />
     <state x="1018" y="493" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1598776800946" />
     <state x="533" y="232" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0" timestamp="1599732599074">
@@ -323,25 +326,29 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1035" y="585" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599907714079" />
-    <state width="2518" height="502" key="GridCell.Tab.0.bottom" timestamp="1599838563548">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1398" height="218" key="GridCell.Tab.0.bottom" timestamp="1600411674297">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="309" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1599734338243" />
+    <state width="1398" height="218" key="GridCell.Tab.0.bottom/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600411674297" />
+    <state width="1398" height="505" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1600171624529" />
     <state width="2518" height="502" key="GridCell.Tab.0.bottom/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563548" />
-    <state width="2518" height="502" key="GridCell.Tab.0.center" timestamp="1599838563547">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1398" height="218" key="GridCell.Tab.0.center" timestamp="1600411674295">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="309" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1599734338242" />
+    <state width="1398" height="218" key="GridCell.Tab.0.center/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600411674295" />
+    <state width="1398" height="505" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1600171624528" />
     <state width="2518" height="502" key="GridCell.Tab.0.center/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563547" />
-    <state width="2518" height="502" key="GridCell.Tab.0.left" timestamp="1599838563547">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1398" height="218" key="GridCell.Tab.0.left" timestamp="1600411674294">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="309" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1599734338241" />
+    <state width="1398" height="218" key="GridCell.Tab.0.left/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600411674294" />
+    <state width="1398" height="505" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1600171624524" />
     <state width="2518" height="502" key="GridCell.Tab.0.left/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563547" />
-    <state width="2518" height="502" key="GridCell.Tab.0.right" timestamp="1599838563548">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1398" height="218" key="GridCell.Tab.0.right" timestamp="1600411674296">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="309" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1599734338242" />
+    <state width="1398" height="218" key="GridCell.Tab.0.right/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600411674296" />
+    <state width="1398" height="505" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1600171624529" />
     <state width="2518" height="502" key="GridCell.Tab.0.right/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563548" />
     <state width="2518" height="502" key="GridCell.Tab.1.bottom" timestamp="1599838563549">
       <screen x="0" y="23" width="2560" height="1417" />
