@@ -72,13 +72,20 @@ class Thread extends Model
     {
         $reply = $this->replies()->create($reply);
 
-        // Controllo di non inviare notifiche a me stesso iscritto ma sono l'autore della risposta
-        // Si potrebbe sfruttare anche il metodo notifyOther() ?????
-        $this->subscriptions->filter(function($sub) use($reply){
-            return $sub->user_id != $reply->user_id;
-        })->each->notify($reply);
+        $this->notifySubscribers($reply);
 
         return $reply;
+    }
+
+    public function notifySubscribers($reply)
+    {
+        // Controllo di non inviare notifiche a me stesso iscritto ma sono l'autore della risposta
+        // Si potrebbe sfruttare anche il metodo notifyOther() ?????
+
+        $this->subscriptions
+            ->where('user_id', '!=', $reply->user_id)
+            ->each
+            ->notify($reply);
     }
 
     public function scopeFilter($query, $filters)
@@ -109,5 +116,17 @@ class Thread extends Model
     public function getIsSubscribedToAttribute()
     {
         return $this->subscriptions()->where('user_id', Auth::id())->exists();
+    }
+
+    public function hasUpdatedFor($user)
+    {
+        if(is_null($user)){
+            return false;
+        }
+        // Verifico se il thread è stato aggiornato dall'ultima volta che l'ho visto
+        // Il valore della chiave Key è il timestamp dell'ultima visita
+        $key = $user->visitedThreadCacheKey($this);
+
+        return $this->updated_at > cache($key);
     }
 }

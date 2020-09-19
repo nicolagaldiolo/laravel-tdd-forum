@@ -6,6 +6,7 @@ use App\Channel;
 use App\Filters\ThreadFilters;
 use App\Thread;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -81,6 +82,13 @@ class ThreadsController extends Controller
      */
     public function show(Channel $channel, Thread $thread)
     {
+
+        // Ogni volta che visito la pagina registro il timestamp con la seguente chiave
+        // formata da id utente e id thread
+        if(Auth::check()){
+            Auth::user()->read($thread);
+        }
+
         return view('threads.show', compact('thread'));
     }
 

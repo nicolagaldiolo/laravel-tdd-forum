@@ -9,7 +9,11 @@
                         <div class="card-header">
                             <h4 class="d-flex">
                                 <a href="{{ $thread->path() }}">
-                                    {{ $thread->title }}
+                                    @if($thread->hasUpdatedFor(auth()->user()))
+                                        <strong style="color: red;">{{ $thread->title }}</strong>
+                                    @else
+                                        {{ $thread->title }}
+                                    @endif
                                 </a>
                                 <a href="{{ $thread->path() }}" class="ml-auto">
                                     <small>{{ $thread->replies_count }} {{ Str::plural('reply', $thread->replies_count) }}</small>

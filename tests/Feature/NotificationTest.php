@@ -6,6 +6,7 @@ use App\Thread;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
@@ -55,6 +56,11 @@ class NotificationTest extends TestCase
 
     public function testAUserCanFetchTheirUnreadNotification()
     {
+        create(DatabaseNotification::class);
+
+        // NON FACCIO SCATTARE LA NOTIFICA DALL'APP MA CREO DIRETTAMENTE IO UNA NOTIFICA A DB TRAMITE FACTORY
+
+        /*
         $thread = create(Thread::class)->subscribe();
 
         // Aggiungo io stesso una risposta
@@ -62,33 +68,22 @@ class NotificationTest extends TestCase
             'user_id' => create(User::class)->id,
             'body' => 'Some reply here'
         ]);
+        */
 
-        $user = Auth::user();
-
-        $response = $this->getJson("/profiles/{$user->name}/notification")->json();
-
-        $this->assertCount(1, $response);
+        $this->assertCount(1, $this->getJson('/profiles/' . Auth::user() . '/notification')->json());
     }
 
     public function testAUserCanMarkANotificationAsRead()
     {
-        $thread = create(Thread::class)->subscribe();
+        create(DatabaseNotification::class);
 
-        // Aggiungo io stesso una risposta
-        $thread->addReply([
-            'user_id' => create(User::class)->id,
-            'body' => 'Some reply here'
-        ]);
+        tap(Auth::user(), function ($user){
+            $this->assertCount(1, $user->unreadNotifications);
 
-        $user = Auth::user();
+            $this->delete('/profiles/' . $user->name . '/notification/' . $user->unreadNotifications()->first()->id);
 
-        $this->assertCount(1, $user->unreadNotifications);
-
-        $notificationId = $user->unreadNotifications()->first()->id;
-
-        $this->delete("/profiles/{$user->name}/notification/{$notificationId}");
-
-        $this->assertCount(0, Auth::user()->fresh()->unreadNotifications);
+            $this->assertCount(0, Auth::user()->fresh()->unreadNotifications);
+        });
 
     }
 }

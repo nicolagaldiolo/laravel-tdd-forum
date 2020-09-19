@@ -2,10 +2,14 @@
 
 namespace Tests\Unit;
 
+use App\Notifications\ThreadWasUpdated;
 use App\User;
+use Carbon\Carbon;
 use Hamcrest\Thingy;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 use App\Thread;
 use App\Channel;
@@ -58,6 +62,36 @@ class ThreadTest extends TestCase
         $this->assertCount(1, $this->thread->replies);
     }
 
+    public function testATestNotifiesAllRegisteredSubscribersWhenAReplyIsAdded()
+    {
+        // Si può usare i feature test per testate il meccanismo implementato nell'applicazione,
+        // quindi mi baso sui dati che trovo a db per l'invio delle notifiche
+        // Oppure si può utilizzare il metodo fake per simulare l'invio delle notifiche
+
+        Notification::fake();
+
+        // Creo 10 utenti e li iscrivo al thread
+        $users = create(User::class, [],10)->each(function($user){
+            $this->thread->subscribe($user->id);
+        });
+
+        $author = $users->random(1)->first();
+
+        // Aggiungo una reply
+        $this->thread->addReply([
+            'body' => 'foobar',
+            'user_id' => $author->id
+        ]);
+
+        // Verifico se tutti gli utenti vengono avvisati tranne l'autore
+        Notification::assertSentTo($users->except($author->id), ThreadWasUpdated::class);
+
+        // Verifico che all'autore non arrivi nessuna notifica
+        Notification::assertNotSentTo($author, ThreadWasUpdated::class);
+
+
+    }
+
     public function testAThreadsBelongsToAChannel()
     {
         $this->assertInstanceOf(Channel::class, $this->thread->channel);
@@ -103,6 +137,21 @@ class ThreadTest extends TestCase
         $this->thread->subscribe();
 
         $this->assertTrue($this->thread->isSubscribedTo);
+    }
+
+    public function testAThreadCanCheckIfTheAuthenticatedUserHasReadAllReplies()
+    {
+        $this->signIn();
+
+        $thread = create(Thread::class);
+
+        tap(Auth::user(), function ($user) use($thread){
+            $this->assertTrue($thread->hasUpdatedFor($user));
+
+            $user->read($thread);
+
+            $this->assertFalse($thread->hasUpdatedFor($user));
+        });
     }
 
 }
