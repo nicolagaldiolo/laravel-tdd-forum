@@ -9,7 +9,7 @@
                         <div class="card-header">
                             <h4 class="d-flex">
                                 <a href="{{ $thread->path() }}">
-                                    @if($thread->hasUpdatedFor(auth()->user()))
+                                    @if(Auth::check() && $thread->hasUpdatedFor(auth()->user()))
                                         <strong style="color: red;">{{ $thread->title }}</strong>
                                     @else
                                         {{ $thread->title }}

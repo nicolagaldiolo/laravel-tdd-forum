@@ -21,4 +21,14 @@ class ReplyPolicy
     {
         return $user->id == $reply->user_id;
     }
+
+    public function create(User $user)
+    {
+        // la relazione lastReply ha bisogno di essere refreshata altrimenti la seconda volta non contiene i dati aggiornati.
+        if(! $lastReply = $user->fresh()->lastReply) {
+            return true;
+        }
+
+        return ! $lastReply->wasJustPublished();
+    }
 }

@@ -120,9 +120,6 @@ class Thread extends Model
 
     public function hasUpdatedFor($user)
     {
-        if(is_null($user)){
-            return false;
-        }
         // Verifico se il thread è stato aggiornato dall'ultima volta che l'ho visto
         // Il valore della chiave Key è il timestamp dell'ultima visita
         $key = $user->visitedThreadCacheKey($this);

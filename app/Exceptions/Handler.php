@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -50,6 +52,30 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        // Inserisco questa gestione in quanto l'errore di validazione classico
+        // effetua un redirect 302 in quanto ripresenta il form ma se faccio una richiesta
+        // ajax voglio un errore tipo 422 (Unprocessable Entity)
+        if ($exception instanceof ValidationException) {
+            if ($request->expectsJson()) {
+                return response('Sorry, validation failed.', 422);
+            }
+        }
+
+        // Dato che ho bisogno di maggiore controllo sulla gestione di questa autorizzazione
+        // in quanto voglio un errore 429 (troppe richieste effettuate) e non un semplice 403
+        if ($exception instanceof ThrottleException) {
+            return response($exception->getMessage(), 429);
+        }
+
         return parent::render($request, $exception);
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+
+        return redirect()->guest(route('login'));
     }
 }

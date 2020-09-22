@@ -1968,12 +1968,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['message'],
   data: function data() {
     return {
+      level: 'success',
       body: '',
       show: false
     };
@@ -1988,13 +1987,14 @@ __webpack_require__.r(__webpack_exports__);
       this.flash(this.message);
     }
 
-    window.events.$on('flash', function (message) {
-      return _this.flash(message);
+    window.events.$on('flash', function (data) {
+      return _this.flash(data);
     });
   },
   methods: {
-    flash: function flash(message) {
-      this.body = message;
+    flash: function flash(data) {
+      this.level = data.level;
+      this.body = data.message;
       this.show = true;
       this.hide();
     },
@@ -2061,6 +2061,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post(location.pathname + '/replies', {
         body: this.body
+      })["catch"](function (error) {
+        flash(error.response.data, 'danger');
       }).then(function (_ref) {
         var data = _ref.data;
         _this.body = '';
@@ -2283,20 +2285,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     update: function update() {
-      var _this2 = this;
-
       axios.patch('/replies/' + this.data.id, {
         body: this.body
-      }).then(function (res) {
-        _this2.editing = false;
-        flash('Updated!');
+      })["catch"](function (error) {
+        flash(error.response.data, 'danger');
       });
+      this.editing = false;
+      flash('Updated!');
     },
     destroy: function destroy() {
-      var _this3 = this;
+      var _this2 = this;
 
       axios["delete"]('/replies/' + this.data.id).then(function (res) {
-        _this3.$emit('deleted', _this3.data.id); // apparentemente non serve a nulla passare il this.data.id in quanto poi chi riceve l'evento non se ne fa nulla dell'id
+        _this2.$emit('deleted', _this2.data.id); // apparentemente non serve a nulla passare il this.data.id in quanto poi chi riceve l'evento non se ne fa nulla dell'id
 
       });
     }
@@ -59861,17 +59862,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      directives: [
-        { name: "show", rawName: "v-show", value: _vm.show, expression: "show" }
-      ],
-      staticClass: "alert alert-success alert-flash",
-      attrs: { role: "alert" }
-    },
-    [_c("strong", [_vm._v("Success!")]), _vm._v(" " + _vm._s(_vm.body) + "\n")]
-  )
+  return _c("div", {
+    directives: [
+      { name: "show", rawName: "v-show", value: _vm.show, expression: "show" }
+    ],
+    staticClass: "alert alert-flash",
+    class: "alert-" + _vm.level,
+    attrs: { role: "alert" },
+    domProps: { textContent: _vm._s(_vm.body) }
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -72594,7 +72593,11 @@ window.Vue.prototype.authorize = function (handler) {
 window.events = new Vue();
 
 window.flash = function (message) {
-  window.events.$emit('flash', message);
+  var level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'success';
+  window.events.$emit('flash', {
+    message: message,
+    level: level
+  });
 };
 
 /***/ }),

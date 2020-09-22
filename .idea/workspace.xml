@@ -3,17 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="dc74aa90-7a0d-4e22-a3fc-29776b41d634" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RepliesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RepliesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ThreadsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ThreadsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/ThreadWasUpdated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/ThreadWasUpdated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Policies/ReplyPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/ReplyPolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Reply.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Reply.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Thread.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Thread.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ModelFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ModelFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Flash.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Flash.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/NewReply.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NewReply.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Reply.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Reply.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/threads/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/threads/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/NotificationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/NotificationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/ThreadTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ThreadTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/PartecipateInThreadsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/PartecipateInThreadsTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/ReplyTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ReplyTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +45,6 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
@@ -178,56 +181,57 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Inspections" />
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/resources/views" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/js/components" />
       <recent name="$PROJECT_DIR$/resources/views/profiles/activities" />
       <recent name="$PROJECT_DIR$/resources/views/threads" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tests" />
-      <recent name="$PROJECT_DIR$/resources/views" />
-    </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.ThreadTest.testAThreadCanCheckIfTheAuthenticatedUserHasReadAllReplies">
-    <configuration name="NotificationTest.testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReplyThatIsNotByTheCurrentUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\NotificationTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/NotificationTest.php" method="testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReplyThatIsNotByTheCurrentUser" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.PartecipateInThreadsTest.testAReplyRequiresABody">
+    <configuration name="PartecipateInThreadsTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\PartecipateInThreadsTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PartecipateInThreadsTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="NotificationTest.testAUserCanFetchTheirUnreadNotification" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\NotificationTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/NotificationTest.php" method="testAUserCanFetchTheirUnreadNotification" scope="Method" />
+    <configuration name="PartecipateInThreadsTest.testAReplyRequiresABody" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\PartecipateInThreadsTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PartecipateInThreadsTest.php" method="testAReplyRequiresABody" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="NotificationTest.testAUserCanMarkANotificationAsRead" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\NotificationTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/NotificationTest.php" method="testAUserCanMarkANotificationAsRead" scope="Method" />
+    <configuration name="PartecipateInThreadsTest.testRepliesThatContainSpamMayNoBeCreated" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\PartecipateInThreadsTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PartecipateInThreadsTest.php" method="testRepliesThatContainSpamMayNoBeCreated" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="ThreadTest.testATestNotifiesAllRegisteredSubscribersWhenAReplyIsAdded" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Unit\ThreadTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Unit/ThreadTest.php" method="testATestNotifiesAllRegisteredSubscribersWhenAReplyIsAdded" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ThreadTest.testAThreadCanCheckIfTheAuthenticatedUserHasReadAllReplies" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Unit\ThreadTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Unit/ThreadTest.php" method="testAThreadCanCheckIfTheAuthenticatedUserHasReadAllReplies" scope="Method" />
+    <configuration name="PartecipateInThreadsTest.testUsersMayOnlyReplyAMaximumOfOncePerMinute" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\PartecipateInThreadsTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PartecipateInThreadsTest.php" method="testUsersMayOnlyReplyAMaximumOfOncePerMinute" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml" directory="$PROJECT_DIR$/tests" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="PHPUnit.phpunit.xml" />
-      <item itemvalue="PHPUnit.NotificationTest.testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReplyThatIsNotByTheCurrentUser" />
-      <item itemvalue="PHPUnit.NotificationTest.testAUserCanFetchTheirUnreadNotification" />
-      <item itemvalue="PHPUnit.NotificationTest.testAUserCanMarkANotificationAsRead" />
-      <item itemvalue="PHPUnit.ThreadTest.testATestNotifiesAllRegisteredSubscribersWhenAReplyIsAdded" />
-      <item itemvalue="PHPUnit.ThreadTest.testAThreadCanCheckIfTheAuthenticatedUserHasReadAllReplies" />
+      <item itemvalue="PHPUnit.PartecipateInThreadsTest.testAReplyRequiresABody" />
+      <item itemvalue="PHPUnit.PartecipateInThreadsTest.testUsersMayOnlyReplyAMaximumOfOncePerMinute" />
+      <item itemvalue="PHPUnit.tests" />
+      <item itemvalue="PHPUnit.PartecipateInThreadsTest.testRepliesThatContainSpamMayNoBeCreated" />
+      <item itemvalue="PHPUnit.PartecipateInThreadsTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.ThreadTest.testAThreadCanCheckIfTheAuthenticatedUserHasReadAllReplies" />
-        <item itemvalue="PHPUnit.ThreadTest.testATestNotifiesAllRegisteredSubscribersWhenAReplyIsAdded" />
-        <item itemvalue="PHPUnit.NotificationTest.testAUserCanMarkANotificationAsRead" />
-        <item itemvalue="PHPUnit.NotificationTest.testAUserCanFetchTheirUnreadNotification" />
-        <item itemvalue="PHPUnit.NotificationTest.testANotificationIsPreparedWhenASubscribedThreadReceinvesANewReplyThatIsNotByTheCurrentUser" />
+        <item itemvalue="PHPUnit.PartecipateInThreadsTest.testAReplyRequiresABody" />
+        <item itemvalue="PHPUnit.PartecipateInThreadsTest.testRepliesThatContainSpamMayNoBeCreated" />
+        <item itemvalue="PHPUnit.PartecipateInThreadsTest.testUsersMayOnlyReplyAMaximumOfOncePerMinute" />
+        <item itemvalue="PHPUnit.PartecipateInThreadsTest" />
+        <item itemvalue="PHPUnit.tests" />
       </list>
     </recent_temporary>
   </component>
@@ -254,7 +258,9 @@
       <workItem from="1599908158367" duration="411000" />
       <workItem from="1599908584212" duration="2664000" />
       <workItem from="1600073765206" duration="6554000" />
-      <workItem from="1600229529030" duration="34662000" />
+      <workItem from="1600229529030" duration="34749000" />
+      <workItem from="1600758431004" duration="4179000" />
+      <workItem from="1600772036663" duration="16632000" />
     </task>
     <servers />
   </component>
@@ -287,15 +293,15 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="533" y="184" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600407079461" />
-    <state x="545" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600232227745">
+    <state x="545" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600795017588">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="545" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600232227745" />
+    <state x="545" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600795017588" />
     <state x="1109" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1596882040275" />
-    <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600516033326">
+    <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600794185274">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600516033326" />
+    <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600794185274" />
     <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.877@0.23.1440.877" timestamp="1597224498477" />
     <state x="1018" y="493" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1598776800946" />
     <state x="533" y="232" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0" timestamp="1599732599074">
@@ -307,58 +313,64 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1103" y="436" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1598377047969" />
-    <state x="889" y="479" key="#com.jetbrains.php.refactoring.pullPush.pullUp.PhpPullUpDialog#1" timestamp="1598783760921">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="500" y="305" key="#com.jetbrains.php.refactoring.pullPush.pullUp.PhpPullUpDialog#1" timestamp="1600760463023">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="500" y="305" key="#com.jetbrains.php.refactoring.pullPush.pullUp.PhpPullUpDialog#1/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600760463023" />
     <state x="500" y="305" key="#com.jetbrains.php.refactoring.pullPush.pullUp.PhpPullUpDialog#1/0.23.1440.877@0.23.1440.877" timestamp="1598334584938" />
     <state x="889" y="479" key="#com.jetbrains.php.refactoring.pullPush.pullUp.PhpPullUpDialog#1/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1598783760921" />
     <state x="1035" y="585" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1599907714079">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1035" y="585" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599907714079" />
-    <state width="1398" height="523" key="GridCell.Tab.0.bottom" timestamp="1600516588025">
+    <state width="1398" height="300" key="GridCell.Tab.0.bottom" timestamp="1600795890616">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="523" key="GridCell.Tab.0.bottom/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600516588025" />
+    <state width="1398" height="300" key="GridCell.Tab.0.bottom/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600795890616" />
     <state width="1398" height="505" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1600171624529" />
     <state width="2518" height="502" key="GridCell.Tab.0.bottom/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563548" />
-    <state width="1398" height="523" key="GridCell.Tab.0.center" timestamp="1600516588023">
+    <state width="1398" height="300" key="GridCell.Tab.0.center" timestamp="1600795890615">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="523" key="GridCell.Tab.0.center/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600516588023" />
+    <state width="1398" height="300" key="GridCell.Tab.0.center/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600795890615" />
     <state width="1398" height="505" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1600171624528" />
     <state width="2518" height="502" key="GridCell.Tab.0.center/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563547" />
-    <state width="1398" height="523" key="GridCell.Tab.0.left" timestamp="1600516588023">
+    <state width="1398" height="300" key="GridCell.Tab.0.left" timestamp="1600795890615">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="523" key="GridCell.Tab.0.left/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600516588023" />
+    <state width="1398" height="300" key="GridCell.Tab.0.left/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600795890615" />
     <state width="1398" height="505" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1600171624524" />
     <state width="2518" height="502" key="GridCell.Tab.0.left/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563547" />
-    <state width="1398" height="523" key="GridCell.Tab.0.right" timestamp="1600516588024">
+    <state width="1398" height="300" key="GridCell.Tab.0.right" timestamp="1600795890616">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="523" key="GridCell.Tab.0.right/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600516588024" />
+    <state width="1398" height="300" key="GridCell.Tab.0.right/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600795890616" />
     <state width="1398" height="505" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1600171624529" />
     <state width="2518" height="502" key="GridCell.Tab.0.right/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563548" />
-    <state width="2518" height="502" key="GridCell.Tab.1.bottom" timestamp="1599838563549">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1600786481750">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.bottom/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600786481750" />
     <state width="2518" height="502" key="GridCell.Tab.1.bottom/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563549" />
-    <state width="2518" height="502" key="GridCell.Tab.1.center" timestamp="1599838563549">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1398" height="286" key="GridCell.Tab.1.center" timestamp="1600786481748">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.center/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600786481748" />
     <state width="2518" height="502" key="GridCell.Tab.1.center/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563549" />
-    <state width="2518" height="502" key="GridCell.Tab.1.left" timestamp="1599838563548">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1398" height="286" key="GridCell.Tab.1.left" timestamp="1600786481748">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.left/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600786481748" />
     <state width="2518" height="502" key="GridCell.Tab.1.left/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563548" />
-    <state width="2518" height="502" key="GridCell.Tab.1.right" timestamp="1599838563549">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1398" height="286" key="GridCell.Tab.1.right" timestamp="1600786481749">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.right/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600786481749" />
     <state width="2518" height="502" key="GridCell.Tab.1.right/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563549" />
-    <state x="836" y="301" key="NewPhpClassDialog" timestamp="1598783709415">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="470" y="195" key="NewPhpClassDialog" timestamp="1600794465741">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="470" y="195" key="NewPhpClassDialog/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600794465741" />
     <state x="470" y="195" key="NewPhpClassDialog/0.23.1440.877@0.23.1440.877" timestamp="1597225775774" />
     <state x="836" y="301" key="NewPhpClassDialog/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1598783709415" />
     <state x="1121" y="662" key="NewPhpFileDialog" timestamp="1598698116678">
@@ -374,10 +386,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="450" y="200" width="549" height="524" key="StructurePopup/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600506688179" />
-    <state x="400" y="201" width="837" height="640" key="find.popup" timestamp="1600494853584">
+    <state x="400" y="201" width="837" height="640" key="find.popup" timestamp="1600791343899">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="400" y="201" width="837" height="640" key="find.popup/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600494853584" />
+    <state x="400" y="201" width="837" height="640" key="find.popup/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600791343899" />
     <state x="987" y="464" width="586" height="534" key="find.popup/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599837276914" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1597226471182">
       <screen x="0" y="23" width="1440" height="877" />

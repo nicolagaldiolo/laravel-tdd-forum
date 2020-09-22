@@ -61,6 +61,7 @@ class PartecipateInThreadsTest extends TestCase
         // Then their reply should be included on the page
         $this->post($thread->path() . '/replies', $reply->toArray())
             ->assertSessionHasErrors('body');
+
     }
 
     function testUnauthorizedUsersCannotDeleteReplies()
@@ -124,5 +125,39 @@ class PartecipateInThreadsTest extends TestCase
         $this->patch("/replies/{$reply->id}", ['body' => $updatedReply]);
 
         $this->assertDatabaseHas('replies', ['id' => $reply->id, 'body' => $updatedReply]);
+    }
+
+    function testRepliesThatContainSpamMayNoBeCreated()
+    {
+        $this->withExceptionHandling();
+        $this->signIn();
+
+        // And an Existing thread
+        $thread = create(Thread::class);
+
+        // When the user adds a reply to the thread
+        $reply = make(Reply::class, [
+            'body' => 'Yahoo Customer Support'
+        ]);
+
+        // Then their reply should be included on the page
+        $this->json('post', $thread->path() . '/replies', $reply->toArray())
+            ->assertStatus(422);
+    }
+
+    function testUsersMayOnlyReplyAMaximumOfOncePerMinute()
+    {
+
+        $this->withExceptionHandling();
+        $this->signIn();
+
+        $thread = create(Thread::class);
+        $reply = make(Reply::class);
+
+        $this->post($thread->path() . '/replies', $reply->toArray())
+            ->assertStatus(201);
+
+        $this->post($thread->path() . '/replies', $reply->toArray())
+            ->assertStatus(429);
     }
 }
