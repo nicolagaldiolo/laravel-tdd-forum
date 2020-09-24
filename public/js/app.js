@@ -2253,7 +2253,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2294,12 +2293,8 @@ __webpack_require__.r(__webpack_exports__);
       flash('Updated!');
     },
     destroy: function destroy() {
-      var _this2 = this;
-
-      axios["delete"]('/replies/' + this.data.id).then(function (res) {
-        _this2.$emit('deleted', _this2.data.id); // apparentemente non serve a nulla passare il this.data.id in quanto poi chi riceve l'evento non se ne fa nulla dell'id
-
-      });
+      axios["delete"]('/replies/' + this.data.id);
+      this.$emit('deleted', this.data.id);
     }
   }
 });
@@ -60145,48 +60140,49 @@ var render = function() {
     _c("div", { staticClass: "card-body" }, [
       _vm.editing
         ? _c("div", [
-            _c("textarea", {
-              directives: [
+            _c("form", { on: { submit: _vm.update } }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.body,
+                      expression: "body"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { required: "" },
+                  domProps: { value: _vm.body },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.body = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn btn-xs btn-primary" }, [
+                _vm._v("Update")
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.body,
-                  expression: "body"
-                }
-              ],
-              staticClass: "form-control",
-              domProps: { value: _vm.body },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                  staticClass: "btn btn-xs btn-link",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.editing = false
+                    }
                   }
-                  _vm.body = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-xs btn-primary",
-                on: { click: _vm.update }
-              },
-              [_vm._v("Update")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-xs btn-link",
-                on: {
-                  click: function($event) {
-                    _vm.editing = false
-                  }
-                }
-              },
-              [_vm._v("Cancel")]
-            )
+                },
+                [_vm._v("Cancel")]
+              )
+            ])
           ])
         : _c("div", { domProps: { textContent: _vm._s(_vm.body) } })
     ]),
@@ -60196,7 +60192,7 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "btn btn-xs btn-secondary",
+              staticClass: "btn btn-xs mr-1",
               on: {
                 click: function($event) {
                   _vm.editing = true
@@ -60209,7 +60205,7 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "btn btn-danger btn-xs",
+              staticClass: "btn btn-xs btn-danger mr-1",
               on: { click: _vm.destroy }
             },
             [_vm._v("Delete")]

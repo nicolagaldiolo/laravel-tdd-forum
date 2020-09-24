@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Events\ThreadReceivedNewReply;
 use App\Notifications\ThreadWasUpdated;
+use App\Notifications\YouWereMentioned;
 use Hamcrest\Thingy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -72,20 +74,9 @@ class Thread extends Model
     {
         $reply = $this->replies()->create($reply);
 
-        $this->notifySubscribers($reply);
+        event(new ThreadReceivedNewReply($reply));
 
         return $reply;
-    }
-
-    public function notifySubscribers($reply)
-    {
-        // Controllo di non inviare notifiche a me stesso iscritto ma sono l'autore della risposta
-        // Si potrebbe sfruttare anche il metodo notifyOther() ?????
-
-        $this->subscriptions
-            ->where('user_id', '!=', $reply->user_id)
-            ->each
-            ->notify($reply);
     }
 
     public function scopeFilter($query, $filters)
