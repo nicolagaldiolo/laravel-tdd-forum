@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/vendor.css') }}" rel="stylesheet">
 
     <script>
         window.App = {!! json_encode([
@@ -32,6 +33,8 @@
             display: none;
         }
     </style>
+
+    @yield('header')
 </head>
 <body>
     <div id="app">
@@ -43,5 +46,6 @@
             <flash message="{{ session('flash') }}"></flash>
         </main>
     </div>
+    @yield('scripts')
 </body>
 </html>

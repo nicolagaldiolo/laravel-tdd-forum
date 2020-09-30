@@ -24,6 +24,9 @@
 </template>
 
 <script>
+
+import Tribute from "tributejs";
+
 export default {
   data() {
     return {
@@ -35,6 +38,41 @@ export default {
     signedIn() {
       return window.App.signedIn;
     }
+  },
+
+  mounted() {
+    var delay;
+    var tributeMultipleTriggers = new Tribute({
+      // The symbol that starts the lookup
+      loadingItemTemplate: '<div style="padding: 16px">Loading</div>',
+
+      // function retrieving an array of objects
+      values: function(text, cb) {
+
+        clearTimeout(delay);
+
+        delay = setTimeout(()=>{
+          let currentData = [];
+
+          axios.get('/api/users', {
+            params: {
+              name: text
+            }
+          }).then(({data}) => {
+            data.forEach(entry => currentData.push({ name: entry}))
+            cb(currentData);
+          }).catch(error => {
+            console.log(error.response.data.error);
+            cb(currentData);
+          });
+        }, 300);
+
+      },
+      lookup: "name",
+      fillAttr: "name",
+    });
+
+    tributeMultipleTriggers.attach(document.getElementById("body"));
   },
 
   methods: {

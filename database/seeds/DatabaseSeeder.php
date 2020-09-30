@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserSeeder::class);
 
         factory(User::class, 1)->create([
-            'name' => 'Nicola',
+            'name' => 'NicolaGaldiolo',
             'email' => 'galdiolo.nicola@gmail.com'
         ])->each(function ($user){
             factory(Thread::class, 10)->create([

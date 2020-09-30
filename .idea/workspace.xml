@@ -3,13 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="dc74aa90-7a0d-4e22-a3fc-29776b41d634" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RepliesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RepliesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ThreadsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ThreadsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Reply.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Reply.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Thread.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Thread.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/NewReply.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NewReply.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Reply.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Reply.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/threads/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/threads/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/MentionUsersTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/MentionUsersTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/ReadThreadsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ReadThreadsTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Unit/ReplyTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ReplyTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,25 +193,25 @@
       <recent name="$PROJECT_DIR$/resources/views/threads" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.MentionUsersTest">
+  <component name="RunManager" selected="PHPUnit.MentionUsersTest.testUnctionItCanFetchAllMentionedUsersStartingWithTheGivenCharacters">
     <configuration name="MentionUsersTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\MentionUsersTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/MentionUsersTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="MentionUsersTest.testMentionedUsersInAReplyAreNotified" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\MentionUsersTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/MentionUsersTest.php" method="testMentionedUsersInAReplyAreNotified" scope="Method" />
+    <configuration name="MentionUsersTest.testUnctionItCanFetchAllMentionedUsersStartingWithTheGivenCharacters" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\MentionUsersTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/MentionUsersTest.php" method="testUnctionItCanFetchAllMentionedUsersStartingWithTheGivenCharacters" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PartecipateInThreadsTest.testAReplyRequiresABody" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\PartecipateInThreadsTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PartecipateInThreadsTest.php" method="testAReplyRequiresABody" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="PartecipateInThreadsTest.testRepliesThatContainSpamMayNoBeCreated" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\PartecipateInThreadsTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PartecipateInThreadsTest.php" method="testRepliesThatContainSpamMayNoBeCreated" scope="Method" />
+    <configuration name="MentionUsersTest.testWrapsMentionedUsersInTheBodyWithinAnchorTags" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\MentionUsersTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/MentionUsersTest.php" method="testWrapsMentionedUsersInTheBodyWithinAnchorTags" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="ReplyTest.testItCanDetectAllMentionedUsersInTheBody" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Unit\ReplyTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Unit/ReplyTest.php" method="testItCanDetectAllMentionedUsersInTheBody" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ReplyTest.testWrapsMentionedUsernamesInTheBodyWithinAnchorTags" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Unit\ReplyTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Unit/ReplyTest.php" method="testWrapsMentionedUsernamesInTheBodyWithinAnchorTags" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -211,19 +220,19 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.phpunit.xml" />
-      <item itemvalue="PHPUnit.PartecipateInThreadsTest.testAReplyRequiresABody" />
-      <item itemvalue="PHPUnit.PartecipateInThreadsTest.testRepliesThatContainSpamMayNoBeCreated" />
-      <item itemvalue="PHPUnit.MentionUsersTest.testMentionedUsersInAReplyAreNotified" />
       <item itemvalue="PHPUnit.ReplyTest.testItCanDetectAllMentionedUsersInTheBody" />
       <item itemvalue="PHPUnit.MentionUsersTest" />
+      <item itemvalue="PHPUnit.MentionUsersTest.testWrapsMentionedUsersInTheBodyWithinAnchorTags" />
+      <item itemvalue="PHPUnit.ReplyTest.testWrapsMentionedUsernamesInTheBodyWithinAnchorTags" />
+      <item itemvalue="PHPUnit.MentionUsersTest.testUnctionItCanFetchAllMentionedUsersStartingWithTheGivenCharacters" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.MentionUsersTest" />
-        <item itemvalue="PHPUnit.MentionUsersTest.testMentionedUsersInAReplyAreNotified" />
+        <item itemvalue="PHPUnit.MentionUsersTest.testUnctionItCanFetchAllMentionedUsersStartingWithTheGivenCharacters" />
+        <item itemvalue="PHPUnit.ReplyTest.testWrapsMentionedUsernamesInTheBodyWithinAnchorTags" />
         <item itemvalue="PHPUnit.ReplyTest.testItCanDetectAllMentionedUsersInTheBody" />
-        <item itemvalue="PHPUnit.PartecipateInThreadsTest.testRepliesThatContainSpamMayNoBeCreated" />
-        <item itemvalue="PHPUnit.PartecipateInThreadsTest.testAReplyRequiresABody" />
+        <item itemvalue="PHPUnit.MentionUsersTest.testWrapsMentionedUsersInTheBodyWithinAnchorTags" />
+        <item itemvalue="PHPUnit.MentionUsersTest" />
       </list>
     </recent_temporary>
   </component>
@@ -253,7 +262,8 @@
       <workItem from="1600229529030" duration="34749000" />
       <workItem from="1600758431004" duration="4179000" />
       <workItem from="1600772036663" duration="16878000" />
-      <workItem from="1600924217745" duration="6314000" />
+      <workItem from="1600924217745" duration="6536000" />
+      <workItem from="1601351083695" duration="13169000" />
     </task>
     <servers />
   </component>
@@ -316,28 +326,28 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1035" y="585" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599907714079" />
-    <state width="1398" height="300" key="GridCell.Tab.0.bottom" timestamp="1600932288378">
+    <state width="1398" height="350" key="GridCell.Tab.0.bottom" timestamp="1601402900021">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="300" key="GridCell.Tab.0.bottom/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600932288378" />
+    <state width="1398" height="350" key="GridCell.Tab.0.bottom/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1601402900021" />
     <state width="1398" height="286" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1600842712915" />
     <state width="2518" height="502" key="GridCell.Tab.0.bottom/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563548" />
-    <state width="1398" height="300" key="GridCell.Tab.0.center" timestamp="1600932288377">
+    <state width="1398" height="350" key="GridCell.Tab.0.center" timestamp="1601402900020">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="300" key="GridCell.Tab.0.center/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600932288377" />
+    <state width="1398" height="350" key="GridCell.Tab.0.center/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1601402900020" />
     <state width="1398" height="286" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1600842712914" />
     <state width="2518" height="502" key="GridCell.Tab.0.center/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563547" />
-    <state width="1398" height="300" key="GridCell.Tab.0.left" timestamp="1600932288376">
+    <state width="1398" height="350" key="GridCell.Tab.0.left" timestamp="1601402900019">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="300" key="GridCell.Tab.0.left/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600932288376" />
+    <state width="1398" height="350" key="GridCell.Tab.0.left/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1601402900019" />
     <state width="1398" height="286" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1600842712913" />
     <state width="2518" height="502" key="GridCell.Tab.0.left/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563547" />
-    <state width="1398" height="300" key="GridCell.Tab.0.right" timestamp="1600932288378">
+    <state width="1398" height="350" key="GridCell.Tab.0.right" timestamp="1601402900021">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="300" key="GridCell.Tab.0.right/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600932288378" />
+    <state width="1398" height="350" key="GridCell.Tab.0.right/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1601402900021" />
     <state width="1398" height="286" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1600842712914" />
     <state width="2518" height="502" key="GridCell.Tab.0.right/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563548" />
     <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1600842712916">

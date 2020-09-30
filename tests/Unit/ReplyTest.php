@@ -34,11 +34,20 @@ class ReplyTest extends TestCase
 
     function testItCanDetectAllMentionedUsersInTheBody()
     {
-        $reply = create(Reply::class, [
+        $reply = new Reply([
             'body' => '@JaneDoe wants to talk to @JohnDoe'
         ]);
 
         $this->assertCount(2, $reply->mentionedUsers());
+    }
+
+    function testWrapsMentionedUsernamesInTheBodyWithinAnchorTags()
+    {
+        $reply = new Reply([
+            'body' => 'Hi @NicolaGaldiolo'
+        ]);
+
+        $this->assertEquals('Hi <a href="/profiles/NicolaGaldiolo">@NicolaGaldiolo</a>', $reply->body);
     }
 
 }
