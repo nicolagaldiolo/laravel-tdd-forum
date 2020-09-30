@@ -7,6 +7,8 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header d-flex">
+                        <img src="{{ $thread->creator->avatar_path }}" width="25" height="25" class="mr-1" alt="{{ $thread->creator->name }}">
+
                         <a href="{{ route('profile', $thread->creator) }}">{{ $thread->creator->name }}</a> posted:
                         {{ $thread->title }}
 
