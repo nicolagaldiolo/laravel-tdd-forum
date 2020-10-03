@@ -3,9 +3,6 @@
 namespace App;
 
 use App\Events\ThreadReceivedNewReply;
-use App\Notifications\ThreadWasUpdated;
-use App\Notifications\YouWereMentioned;
-use Hamcrest\Thingy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -117,4 +114,17 @@ class Thread extends Model
 
         return $this->updated_at > cache($key);
     }
+
+    /*
+     * Creare una classe dedicata e utilizzare Redis per gestire il conteggio delle visite ha senso solo
+     * se abbiamo tantissime visite e dobbiamo risparmiare un interrogazione a db. Per questo motivo ho
+     * rimosso l'ultizzo della classe visits, ma semplicemente ho aggiunto un campo a db per gestire le visite
+     */
+
+    /*public function visits()
+    {
+        return new Visits($this);
+    }
+    */
+
 }

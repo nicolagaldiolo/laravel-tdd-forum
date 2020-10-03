@@ -39,7 +39,8 @@ $factory->define(Thread::class, function ($faker){
             return factory(User::class)->create()->id;
         },
         'title' => $faker->sentence,
-        'body' => $faker->paragraph
+        'body' => $faker->paragraph,
+        'visits' => 0
     ];
 });
 

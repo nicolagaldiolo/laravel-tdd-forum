@@ -154,4 +154,31 @@ class ThreadTest extends TestCase
         });
     }
 
+    /*
+     * Creare una classe dedicata e utilizzare Redis per gestire il conteggio delle visite ha senso solo
+     * se abbiamo tantissime visite e dobbiamo risparmiare un interrogazione a db. Per questo motivo ho
+     * rimosso l'ultizzo della classe visits, ma semplicemente ho aggiunto un campo a db per gestire le visite
+     *
+
+    public function testAThreadRecordsEachVisit()
+    {
+        $thread = make(Thread::class, [
+            'id' => 1
+        ]);
+
+        $thread->visits()->reset();
+
+        $this->assertSame(0, $thread->visits()->count());
+        // assertSame perchè voglio essere sicuro che il valore tornato sia 0 e non null
+        // altrimenti con assertEquals 0 è uguale a null
+
+        $thread->visits()->record();
+
+        $this->assertEquals(1, $thread->visits()->count());
+
+        $thread->visits()->record();
+
+        $this->assertEquals(2, $thread->visits()->count());
+    }
+    */
 }

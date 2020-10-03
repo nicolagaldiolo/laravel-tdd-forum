@@ -7,10 +7,12 @@ use App\Filters\ThreadFilters;
 use App\Inspections\Spam;
 use App\Rules\SpamFree;
 use App\Thread;
+use App\Trending;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 
 class ThreadsController extends Controller
 {
@@ -25,7 +27,7 @@ class ThreadsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Channel $channel, ThreadFilters $filters)
+    public function index(Channel $channel, ThreadFilters $filters, Trending $trending)
         // ThreadFilters è un instanza della classe ThreadFilters che viene iniettata con la dependency injection
     {
 
@@ -35,7 +37,10 @@ class ThreadsController extends Controller
             return $threads;
         }
 
-        return view('threads.index', compact('threads'));
+        return view('threads.index', [
+            'threads' => $threads,
+            'trending' => $trending->get()
+        ]);
     }
 
     /**
@@ -82,7 +87,7 @@ class ThreadsController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show(Channel $channel, Thread $thread)
+    public function show(Channel $channel, Thread $thread, Trending $trending)
     {
 
         // Ogni volta che visito la pagina registro il timestamp con la seguente chiave
@@ -90,6 +95,16 @@ class ThreadsController extends Controller
         if(Auth::check()){
             Auth::user()->read($thread);
         }
+
+        $trending->push($thread);
+
+        /*
+        * Creare una classe dedicata e utilizzare Redis per gestire il conteggio delle visite ha senso solo
+        * se abbiamo tantissime visite e dobbiamo risparmiare un interrogazione a db. Per questo motivo ho
+        * rimosso l'ultizzo della classe visits, ma semplicemente ho aggiunto un campo a db per gestire le visite
+        */
+        //$thread->visits()->record();
+        $thread->increment('visits');
 
         return view('threads.show', compact('thread'));
     }
