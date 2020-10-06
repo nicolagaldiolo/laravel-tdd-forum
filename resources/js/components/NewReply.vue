@@ -34,12 +34,6 @@ export default {
     };
   },
 
-  computed: {
-    signedIn() {
-      return window.App.signedIn;
-    }
-  },
-
   mounted() {
     var delay;
     var tributeMultipleTriggers = new Tribute({

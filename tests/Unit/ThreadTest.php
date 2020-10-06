@@ -32,12 +32,12 @@ class ThreadTest extends TestCase
 
     }
 
-    public function testAThreadCanMakeAStringPath()
+    public function testAThreadHasAPath()
     {
         $thread = create(Thread::class);
 
         $this->assertEquals(
-            "/threads/{$thread->channel->slug}/{$thread->id}",
+            "/threads/{$thread->channel->slug}/{$thread->slug}",
             $thread->path()
         );
     }

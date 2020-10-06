@@ -25,12 +25,26 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
+        'confirmed' => true, // conferma account manuale (solo per scopi didattici, altrimenti usare funzioanlità built-in laravel)
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
     ];
 });
 
+// Posso creare anche le factory con uno stato.
+// Di default la factory user è già confermato ma posso anche creare lo stato non confermato
+// che verrà chiamato così factory(User::class)->state('unconfirmed')->create() per sovrascrivere il default
+$factory->state(User::class, 'unconfirmed', function (){
+    return [
+        'confirmed' => false // conferma account manuale (solo per scopi didattici, altrimenti usare funzioanlità built-in laravel)
+    ];
+});
+
+
 $factory->define(Thread::class, function ($faker){
+
+    $title = $faker->sentence;
+
     return [
         'channel_id' => function(){
             return factory(Channel::class)->create()->id;
@@ -38,9 +52,10 @@ $factory->define(Thread::class, function ($faker){
         'user_id' => function(){
             return factory(User::class)->create()->id;
         },
-        'title' => $faker->sentence,
+        'title' => $title,
         'body' => $faker->paragraph,
-        'visits' => 0
+        'visits' => 0,
+        'slug' => Str::slug($title)
     ];
 });
 

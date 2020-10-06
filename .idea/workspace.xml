@@ -2,18 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc74aa90-7a0d-4e22-a3fc-29776b41d634" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/forum.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/forum.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ThreadsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ThreadsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Reply.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Reply.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Thread.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Thread.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/factories/ModelFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ModelFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_08_080400_create_threads_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_08_080400_create_threads_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/threads/_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/threads/_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/threads/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/threads/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ReadThreadsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ReadThreadsTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Flash.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Flash.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/NewReply.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NewReply.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Reply.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Reply.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/CreateThreadTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/CreateThreadTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/ReplyTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ReplyTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Unit/ThreadTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ThreadTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -192,25 +199,25 @@
       <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.ReadThreadsTest.testWeRecordANewVisitEachTimeTheThreadIsRead">
-    <configuration name="ReadThreadsTest.testWeRecordANewVisitEachTimeTheThreadIsRead" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\ReadThreadsTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/ReadThreadsTest.php" method="testWeRecordANewVisitEachTimeTheThreadIsRead" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.BestReplyTest">
+    <configuration name="BestReplyTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\BestReplyTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/BestReplyTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="BestReplyTest.testAThreadCreatorMyMarkAnyReplyAsTheBestReply" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\BestReplyTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/BestReplyTest.php" method="testAThreadCreatorMyMarkAnyReplyAsTheBestReply" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="BestReplyTest.test_only_the_thread_creator_may_mark_a_reply_as_best" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\BestReplyTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/BestReplyTest.php" method="test_only_the_thread_creator_may_mark_a_reply_as_best" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ReplyTest.testItKnowsIfItIsTheBestReply" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Unit\ReplyTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Unit/ReplyTest.php" method="testItKnowsIfItIsTheBestReply" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="ThreadTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Unit\ThreadTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Unit/ThreadTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ThreadTest.testAThreadRecordsEachVisit" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Unit\ThreadTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Unit/ThreadTest.php" method="testAThreadRecordsEachVisit" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TrendingThreadsTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\TrendingThreadsTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/TrendingThreadsTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TrendingThreadsTest.testIncrementsAThreadsScoreEachTimeItIsRead" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\TrendingThreadsTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/TrendingThreadsTest.php" method="testIncrementsAThreadsScoreEachTimeItIsRead" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -219,19 +226,19 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.phpunit.xml" />
-      <item itemvalue="PHPUnit.TrendingThreadsTest.testIncrementsAThreadsScoreEachTimeItIsRead" />
-      <item itemvalue="PHPUnit.TrendingThreadsTest" />
+      <item itemvalue="PHPUnit.ReplyTest.testItKnowsIfItIsTheBestReply" />
+      <item itemvalue="PHPUnit.BestReplyTest.testAThreadCreatorMyMarkAnyReplyAsTheBestReply" />
+      <item itemvalue="PHPUnit.BestReplyTest" />
+      <item itemvalue="PHPUnit.BestReplyTest.test_only_the_thread_creator_may_mark_a_reply_as_best" />
       <item itemvalue="PHPUnit.ThreadTest" />
-      <item itemvalue="PHPUnit.ThreadTest.testAThreadRecordsEachVisit" />
-      <item itemvalue="PHPUnit.ReadThreadsTest.testWeRecordANewVisitEachTimeTheThreadIsRead" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.ReadThreadsTest.testWeRecordANewVisitEachTimeTheThreadIsRead" />
-        <item itemvalue="PHPUnit.ThreadTest.testAThreadRecordsEachVisit" />
+        <item itemvalue="PHPUnit.BestReplyTest" />
         <item itemvalue="PHPUnit.ThreadTest" />
-        <item itemvalue="PHPUnit.TrendingThreadsTest.testIncrementsAThreadsScoreEachTimeItIsRead" />
-        <item itemvalue="PHPUnit.TrendingThreadsTest" />
+        <item itemvalue="PHPUnit.BestReplyTest.test_only_the_thread_creator_may_mark_a_reply_as_best" />
+        <item itemvalue="PHPUnit.BestReplyTest.testAThreadCreatorMyMarkAnyReplyAsTheBestReply" />
+        <item itemvalue="PHPUnit.ReplyTest.testItKnowsIfItIsTheBestReply" />
       </list>
     </recent_temporary>
   </component>
@@ -263,7 +270,8 @@
       <workItem from="1600772036663" duration="16878000" />
       <workItem from="1600924217745" duration="6536000" />
       <workItem from="1601351083695" duration="24588000" />
-      <workItem from="1601612927140" duration="15724000" />
+      <workItem from="1601612927140" duration="18574000" />
+      <workItem from="1601966802128" duration="28923000" />
     </task>
     <servers />
   </component>
@@ -302,11 +310,12 @@
     <state x="545" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600795017588" />
     <state x="545" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1601715117652" />
     <state x="1109" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1596882040275" />
-    <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601722318884">
+    <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601978090120">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.877/-544.-1417.2560.1417/-1984.-583.1440.877@0.23.1440.877" timestamp="1601978090120" />
     <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600929083946" />
-    <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.877@0.23.1440.877" timestamp="1601722318884" />
+    <state x="573" y="314" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.877@0.23.1440.877" timestamp="1601728377456" />
     <state x="1018" y="493" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1598776800946" />
     <state x="533" y="232" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0" timestamp="1599732599074">
       <screen x="0" y="23" width="1440" height="877" />
@@ -331,29 +340,33 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1035" y="585" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599907714079" />
-    <state width="1398" height="328" key="GridCell.Tab.0.bottom" timestamp="1601725267796">
+    <state width="1398" height="222" key="GridCell.Tab.0.bottom" timestamp="1602000024783">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state width="1398" height="222" key="GridCell.Tab.0.bottom/0.23.1440.877/-544.-1417.2560.1417/-1984.-583.1440.877@0.23.1440.877" timestamp="1602000024783" />
     <state width="1398" height="300" key="GridCell.Tab.0.bottom/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1601616990386" />
-    <state width="1398" height="328" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1601725267796" />
+    <state width="1398" height="340" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1601729416054" />
     <state width="2518" height="502" key="GridCell.Tab.0.bottom/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563548" />
-    <state width="1398" height="328" key="GridCell.Tab.0.center" timestamp="1601725267795">
+    <state width="1398" height="222" key="GridCell.Tab.0.center" timestamp="1602000024782">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state width="1398" height="222" key="GridCell.Tab.0.center/0.23.1440.877/-544.-1417.2560.1417/-1984.-583.1440.877@0.23.1440.877" timestamp="1602000024782" />
     <state width="1398" height="300" key="GridCell.Tab.0.center/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1601616990385" />
-    <state width="1398" height="328" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1601725267795" />
+    <state width="1398" height="340" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1601729416053" />
     <state width="2518" height="502" key="GridCell.Tab.0.center/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563547" />
-    <state width="1398" height="328" key="GridCell.Tab.0.left" timestamp="1601725267794">
+    <state width="1398" height="222" key="GridCell.Tab.0.left" timestamp="1602000024781">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state width="1398" height="222" key="GridCell.Tab.0.left/0.23.1440.877/-544.-1417.2560.1417/-1984.-583.1440.877@0.23.1440.877" timestamp="1602000024781" />
     <state width="1398" height="300" key="GridCell.Tab.0.left/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1601616990384" />
-    <state width="1398" height="328" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1601725267794" />
+    <state width="1398" height="340" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1601729416052" />
     <state width="2518" height="502" key="GridCell.Tab.0.left/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563547" />
-    <state width="1398" height="328" key="GridCell.Tab.0.right" timestamp="1601725267795">
+    <state width="1398" height="222" key="GridCell.Tab.0.right" timestamp="1602000024782">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state width="1398" height="222" key="GridCell.Tab.0.right/0.23.1440.877/-544.-1417.2560.1417/-1984.-583.1440.877@0.23.1440.877" timestamp="1602000024782" />
     <state width="1398" height="300" key="GridCell.Tab.0.right/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1601616990385" />
-    <state width="1398" height="328" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1601725267795" />
+    <state width="1398" height="340" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1601729416053" />
     <state width="2518" height="502" key="GridCell.Tab.0.right/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563548" />
     <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1600842712916">
       <screen x="0" y="23" width="1440" height="877" />
@@ -398,11 +411,12 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="450" y="200" width="549" height="524" key="StructurePopup/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600506688179" />
-    <state x="400" y="201" width="837" height="640" key="find.popup" timestamp="1601708524167">
+    <state x="400" y="201" width="837" height="640" key="find.popup" timestamp="1602003303644">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="400" y="201" width="837" height="640" key="find.popup/0.23.1440.877/-544.-1417.2560.1417/-1984.-583.1440.877@0.23.1440.877" timestamp="1602003303644" />
     <state x="400" y="201" width="837" height="640" key="find.popup/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1601614670559" />
-    <state x="400" y="201" width="837" height="640" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1601708524167" />
+    <state x="400" y="201" width="837" height="640" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1601726352564" />
     <state x="987" y="464" width="586" height="534" key="find.popup/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599837276914" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1597226471182">
       <screen x="0" y="23" width="1440" height="877" />

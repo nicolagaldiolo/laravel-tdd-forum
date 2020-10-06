@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\CustomPleaseConfirmYourEmail;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -64,10 +68,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return User::forceCreate([ // uso forceCreate perchè il confirmation_token non è tra i campi fillable
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'confirmation_token' => Str::limit(md5($data['email']) . Str::random(),25, '')
         ]);
+    }
+
+    // QUESTO NON è LA FUNZIONALITà OUT-OF-THE-BOX DI LARAVEL, NE STIAMO FACENDO UNA CUSTOM PER SCOPI DIDATTICI
+    // QUESTO METODO è DEFINITO NEL TRAIT RegistersUsers
+    protected function registered(Request $request, $user)
+    {
+        Mail::to($user)->send(new CustomPleaseConfirmYourEmail($user));
+        return redirect($this->redirectPath());
     }
 }

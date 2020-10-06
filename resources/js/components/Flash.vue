@@ -10,7 +10,7 @@
       data(){
         return {
           level: 'success',
-          body: '',
+          body: this.message,
           show: false
         }
       },
@@ -19,7 +19,7 @@
       },
       created() {
         if(this.message){
-          this.flash(this.message)
+          this.flash()
         }
 
         window.events.$on('flash', data => this.flash(data));
@@ -27,8 +27,10 @@
 
       methods: {
         flash(data) {
-          this.level = data.level;
-          this.body = data.message;
+          if(data){
+            this.level = data.level;
+            this.body = data.message;
+          }
           this.show = true;
 
           this.hide();

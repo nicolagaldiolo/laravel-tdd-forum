@@ -7,6 +7,7 @@ use App\Channel;
 use App\Reply;
 use App\Thread;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
@@ -22,19 +23,33 @@ class CreateThreadTest extends TestCase
         $this->withExceptionHandling();
 
         $this->get('/threads/create')
-            ->assertRedirect('/login');
+            ->assertRedirect(route('login'));
 
-        $this->post('/threads', [])
-            ->assertRedirect('/login');
+        $this->post(route('threads'), [])
+            ->assertRedirect(route('login'));
     }
 
-    function testAnAuthenticatedUserCanCreateNewForumThreads()
+    function testNewUsersMustFirstConfirmTheirEmailAddressBeforeCreatingThreads()
+    {
+
+        $user = factory(User::class)->state('unconfirmed')->create();
+
+        $this->signIn($user);
+
+        $thread = make(Thread::class);
+
+        $this->post(route('threads'), $thread->toArray())
+            ->assertRedirect(route('threads'))
+            ->assertSessionHas('flash', 'You must confirm first your email address');
+    }
+
+    function testAUserCanCreateNewForumThreads()
     {
         $this->signIn(); //
 
         $thread = make(Thread::class);
 
-        $response = $this->post('/threads', $thread->toArray());
+        $response = $this->post(route('threads'), $thread->toArray());
 
         $this->get($response->headers->get('Location')) // contiene il path definito come redirect nel metodo store del controller
             ->assertSee($thread->title)
@@ -63,6 +78,33 @@ class CreateThreadTest extends TestCase
 
         $this->publishThread(['channel_id' => 999])
             ->assertSessionHasErrors('channel_id');
+    }
+
+    /** @test */
+    function testAThreadRequiresAUniqueSlug()
+    {
+        $this->signIn();
+
+        $thread = create(Thread::class, ['title' => 'foo bar']);
+
+        $this->assertEquals($thread->slug, 'foo-bar');
+
+        $thread = $this->postJson(route('threads'), $thread->toArray())->json();
+
+        $this->assertEquals("foo-bar-{$thread['id']}", $thread['slug']);
+
+    }
+
+    function test_a_thread_with_a_title_that_ends_in_a_number_should_generate_the_proper_slug()
+    {
+        $this->signIn();
+
+        $thread = create(Thread::class, ['title' => 'foo bar 24']);
+
+        $thread = $this->postJson(route('threads'), $thread->toArray())->json();
+
+        $this->assertEquals("foo-bar-24-{$thread['id']}", $thread['slug']);
+
     }
 
 
@@ -100,7 +142,7 @@ class CreateThreadTest extends TestCase
 
         // se uso il metodo delete mi aspetto di essere reindinirzzato quindi ottengo un 302
         //$response = $this->delete($thread->path())
-        //    ->assertRedirect('/threads');
+        //    ->assertRedirect(route('threads'));
 
         $this->assertDatabaseMissing('threads', ['id' => $thread->id]);
         $this->assertDatabaseMissing('replies', ['id' => $reply->id]);
@@ -117,6 +159,6 @@ class CreateThreadTest extends TestCase
 
         $thread = make(Thread::class, $overrides);
 
-        return $this->post('/threads', $thread->toArray());
+        return $this->post(route('threads'), $thread->toArray());
     }
 }

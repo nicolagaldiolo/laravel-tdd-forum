@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Str;
 
 class ThreadsController extends Controller
 {
@@ -73,8 +74,12 @@ class ThreadsController extends Controller
             'user_id' => Auth::id(),
             'channel_id' => request('channel_id'),
             'title' => request('title'),
-            'body' => request('body'),
+            'body' => request('body')
         ]);
+
+        if($request->expectsJson()){
+            return response($thread, 201);
+        }
 
         return redirect($thread->path())
             ->with('flash', 'Your thread has been published!');

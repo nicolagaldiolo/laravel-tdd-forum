@@ -1,5 +1,5 @@
 <template>
-  <div :id="'reply-'+id" class="card">
+  <div :id="'reply-'+id" class="card" :class="isBest ? 'bg-success' : ''">
     <div class="card-header">
       <div class="d-flex align-items-center">
         <h5>
@@ -26,9 +26,12 @@
       <div v-else v-html="body"></div>
     </div>
 
-    <div class="card-footer d-flex" v-if="canUpdate">
-      <button class="btn btn-xs mr-1" @click="editing = true">Edit</button>
-      <button class="btn btn-xs btn-danger mr-1" @click="destroy">Delete</button>
+    <div class="card-footer d-flex">
+      <div v-if="authorize('updateReply', reply)">
+        <button class="btn btn-xs mr-1" @click="editing = true">Edit</button>
+        <button class="btn btn-xs btn-danger mr-1" @click="destroy">Delete</button>
+      </div>
+      <button v-if="!isBest" class="btn btn-xs btn-primary ml-auto" @click="markBestReply">Best Reply?</button>
     </div>
   </div>
 </template>
@@ -47,21 +50,15 @@ export default {
       editing: false,
       id: this.data.id,
       body: this.data.body,
-      members: []
+      members: [],
+      isBest: false,
+      reply: this.data
     };
   },
 
   computed: {
     ago() {
       return moment(this.data.created_at).fromNow() + '...';
-    },
-
-    signedIn() {
-      return window.App.signedIn;
-    },
-
-    canUpdate() {
-      return this.authorize(user => this.data.user_id == user.id);
     }
   },
 
@@ -84,6 +81,10 @@ export default {
       axios.delete('/replies/' + this.data.id);
 
       this.$emit('deleted', this.data.id);
+    },
+
+    markBestReply() {
+      this.isBest = true;
     }
   }
 }

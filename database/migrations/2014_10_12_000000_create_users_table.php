@@ -18,6 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+
+            // conferma account manuale (solo per scopi didattici, altrimenti usare funzioanlità built-in laravel)
+            $table->boolean('confirmed')->default(false);
+            $table->string('confirmation_token', 25)->nullable();
+
             $table->string('avatar_path')->nullable();
             $table->string('password');
             $table->rememberToken();

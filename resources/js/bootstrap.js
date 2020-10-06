@@ -23,13 +23,28 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.Vue.prototype.authorize = function (handler){
+let authorizations = require('./authorizations');
+
+Vue.prototype.authorize = function (...params){
+
     //Additional admin autorization
     // return true
 
-    let user = window.App.user;
-    return user ? handler(user) : false;
+    // Se non sono loggato torno false
+    if( !window.App.signedIn ) return false;
+
+    // Se il primo parametro è una stringa cerco l'autorizzazione con quel nome e come secondo parametro passo
+    // l'oggetto su cui controllare l'autorizzazione
+    if(typeof params[0] === 'string'){
+        return authorizations[params[0]](params[1]);
+    }
+
+    // se non ho passato una stringa (quindi mi aspetto una funzione chiamo quella funzione passandogli l'utente corrente)
+    return params[0](window.App.user);
 }
+
+// metto a disposizione globalmente per tutte le istanze vue la proprietà signedId
+Vue.prototype.signedIn = window.App.signedIn;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
