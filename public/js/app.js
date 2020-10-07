@@ -2408,7 +2408,7 @@ __webpack_require__.r(__webpack_exports__);
       id: this.data.id,
       body: this.data.body,
       members: [],
-      isBest: false,
+      isBest: this.data.isBest,
       reply: this.data
     };
   },
@@ -2416,6 +2416,13 @@ __webpack_require__.r(__webpack_exports__);
     ago: function ago() {
       return moment__WEBPACK_IMPORTED_MODULE_1___default()(this.data.created_at).fromNow() + '...';
     }
+  },
+  created: function created() {
+    var _this = this;
+
+    window.events.$on('best-reply-selected', function (id) {
+      _this.isBest = id === _this.id;
+    }); // ascolto un evento globale
   },
   methods: {
     update: function update() {
@@ -2432,7 +2439,11 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('deleted', this.data.id);
     },
     markBestReply: function markBestReply() {
-      this.isBest = true;
+      var _this2 = this;
+
+      axios.post('/replies/' + this.data.id + '/best').then(function () {
+        window.events.$emit('best-reply-selected', _this2.id); // emetto un evento globale
+      });
     }
   }
 });

@@ -51,7 +51,7 @@ export default {
       id: this.data.id,
       body: this.data.body,
       members: [],
-      isBest: false,
+      isBest: this.data.isBest,
       reply: this.data
     };
   },
@@ -60,6 +60,13 @@ export default {
     ago() {
       return moment(this.data.created_at).fromNow() + '...';
     }
+  },
+
+  created() {
+
+    window.events.$on('best-reply-selected', id => {
+      this.isBest = (id === this.id);
+    }) // ascolto un evento globale
   },
 
   methods: {
@@ -84,7 +91,9 @@ export default {
     },
 
     markBestReply() {
-      this.isBest = true;
+      axios.post('/replies/' + this.data.id + '/best').then(()=>{
+        window.events.$emit('best-reply-selected', this.id) // emetto un evento globale
+      });
     }
   }
 }

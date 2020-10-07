@@ -52,10 +52,8 @@ class Thread extends Model
             $thread->replies->each->delete();
         });
 
-        static::created(function ($thread){
-           $thread->update([
-               'slug' => $thread->title
-           ]);
+        static::created(function ($thread) {
+            $thread->update(['slug' => $thread->title]);
         });
     }
 
@@ -120,22 +118,21 @@ class Thread extends Model
 
     public function setSlugAttribute($value)
     {
-        $slug = Str::slug($value);
-
         // NEL CASO IN CUI VOGLIO DEGLI SLUG INCREEMENTALI
         // foo-bar
         // foo-bar-2
         // foo-bar-3
         /*
+
         $original = $slug;
         $count = 2;
-        while(static::whereSlug($slug)->exists()){
+        while(static::whereSlug($slug = Str::slug($value))->exists()){
             $slug = "{$original}-" . $count ++;
         }
         */
 
         // NEL CASO IN CUI VOGLIO UNO SLUG BASATO SU ID IN CASO SIA GIà OCCUPATO IL NOME
-        if(static::whereSlug($slug)->exists()){
+        if (static::whereSlug($slug = Str::slug($value))->exists()) {
             $slug = "{$slug}-{$this->id}";
         }
 
