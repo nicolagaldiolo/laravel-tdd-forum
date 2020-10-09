@@ -32,4 +32,13 @@ class UserTest extends TestCase
 
         $this->assertEquals(asset('avatars/me.jpg'), $user->avatar_path);
     }
+
+    function testItsNotPossibleHaveTwoUsersWithTheSameName()
+    {
+        $this->expectException('Illuminate\Database\QueryException');
+        $this->expectExceptionCode(23000);
+        $this->expectDeprecationMessage('Integrity constraint violation: 19 UNIQUE constraint failed');
+
+        create(User::class, ['name' => 'JonDoe'], 2);
+    }
 }

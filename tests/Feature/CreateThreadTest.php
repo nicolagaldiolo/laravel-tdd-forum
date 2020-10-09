@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Activity;
 use App\Channel;
 use App\Reply;
+use App\Rules\Recaptcha;
 use App\Thread;
 use App\User;
 use Carbon\Carbon;
@@ -16,6 +17,21 @@ use Tests\TestCase;
 class CreateThreadTest extends TestCase
 {
     use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Dichiaro che nei test quando viene richiesta la classe Recaptcha in realtà viene tornata il risultato della clousure
+        // Ogni volta che viene chiamata la classe Recaptcha in realtà mi faccio mokko la classe, mi assicuro che venga
+        // invocato il metodo passes e forzo di ritornare true
+
+        app()->singleton(Recaptcha::class, function(){
+            return \Mockery::mock(Recaptcha::class, function ($m){
+                $m->shouldReceive('passes')->andReturn(true);
+            });
+        });
+    }
 
     function testGuestsMayNotCreateThreads()
     {
@@ -45,15 +61,15 @@ class CreateThreadTest extends TestCase
 
     function testAUserCanCreateNewForumThreads()
     {
-        $this->signIn(); //
 
-        $thread = make(Thread::class);
-
-        $response = $this->post(route('threads'), $thread->toArray());
+        $response = $this->publishThread([
+            'title' => 'myTitle',
+            'body' => 'myBody'
+        ]);
 
         $this->get($response->headers->get('Location')) // contiene il path definito come redirect nel metodo store del controller
-            ->assertSee($thread->title)
-            ->assertSee($thread->body);
+            ->assertSee('myTitle')
+            ->assertSee('myBody');
     }
 
     function testAThreadRequiresATitle()
@@ -66,6 +82,18 @@ class CreateThreadTest extends TestCase
     {
         $this->publishThread(['body' => null])
             ->assertSessionHasErrors('body');
+    }
+
+    function test_a_thread_required_recaptcha_verification()
+    {
+
+        // Nel metodo setup ho dichiarato che qualsiasi volta che viene chiamata la classe Recaptcha in realtà mi faccio
+        // tornare una classe che mokka la classe originale Recaptcha in quanto se usassi la classe originale il test fallirebbe.
+        // In questo però voglio testare la classe originale e rimuovo l'associazione solo per questo test
+        unset(app()[Recaptcha::class]);
+
+        $this->publishThread()
+            ->assertSessionHasErrors('g-recaptcha-response');
     }
 
     function testAThreadRequiresAValidChannel()
@@ -89,7 +117,7 @@ class CreateThreadTest extends TestCase
 
         $this->assertEquals($thread->slug, 'foo-bar');
 
-        $thread = $this->postJson(route('threads'), $thread->toArray())->json();
+        $thread = $this->postJson(route('threads'), $thread->toArray() + ['g-recaptcha-response' => 'token'])->json();
 
         $this->assertEquals("foo-bar-{$thread['id']}", $thread['slug']);
 
@@ -101,7 +129,7 @@ class CreateThreadTest extends TestCase
 
         $thread = create(Thread::class, ['title' => 'foo bar 24']);
 
-        $thread = $this->postJson(route('threads'), $thread->toArray())->json();
+        $thread = $this->postJson(route('threads'), $thread->toArray() + ['g-recaptcha-response' => 'token'])->json();
 
         $this->assertEquals("foo-bar-24-{$thread['id']}", $thread['slug']);
 
@@ -159,6 +187,6 @@ class CreateThreadTest extends TestCase
 
         $thread = make(Thread::class, $overrides);
 
-        return $this->post(route('threads'), $thread->toArray());
+        return $this->post(route('threads'), $thread->toArray() + ['g-recaptcha-response' => 'token']);
     }
 }

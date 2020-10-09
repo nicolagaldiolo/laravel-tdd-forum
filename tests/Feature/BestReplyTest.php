@@ -45,7 +45,7 @@ class BestReplyTest extends TestCase
         $this->assertFalse($replies[1]->fresh()->isBest());
     }
 
-    public function test_if_a_best_reply_is_deleted_then_the_thread_is_properly_updated_to()
+    public function test_if_a_best_reply_is_deleted_then_the_thread_is_properly_updated_to_reflect_that()
     {
 
         // Abilito l'utilizzo delle foreign_key su sql-lite | qui è già

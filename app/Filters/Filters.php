@@ -34,6 +34,6 @@ abstract class Filters
 
     protected function getFilters() // mi faccio tornare dalla request tutti i parametri contenuti nell'array $filters
     {
-        return $this->request->only($this->filters);
+        return array_filter($this->request->only($this->filters)); //array_filter senza callback rimuove dall'array tutti gli elementi vuoti
     }
 }

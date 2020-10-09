@@ -40,6 +40,12 @@ $factory->state(User::class, 'unconfirmed', function (){
     ];
 });
 
+$factory->state(User::class, 'administrator', function (){
+    return [
+        'name' => 'JohnDoe'
+    ];
+});
+
 
 $factory->define(Thread::class, function ($faker){
 
@@ -54,7 +60,8 @@ $factory->define(Thread::class, function ($faker){
         },
         'title' => $title,
         'body' => $faker->paragraph,
-        'visits' => 0
+        'visits' => 0,
+        'locked' => false
     ];
 });
 

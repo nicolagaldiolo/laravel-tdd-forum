@@ -1,5 +1,15 @@
 @extends('layouts.app')
 
+@section('header')
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <script>
+        function onSubmit(token) {
+            document.getElementById("thread-post").submit();
+        }
+    </script>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -8,7 +18,7 @@
                     <div class="card-header">{{ __('Create a new Thread') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="/threads">
+                        <form id="thread-post" method="POST" action="/threads">
                             @csrf
                             <div class="form-group">
                                 <label>Channel</label>
@@ -28,7 +38,11 @@
                                 <textarea name="body" class="form-control" rows="8" required>{{ old('body') }}</textarea>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Publish</button>
+
+                                <button class="btn btn-primary g-recaptcha"
+                                        data-sitekey="{{ config('services.recaptcha.key') }}"
+                                        data-callback='onSubmit'
+                                        data-action='submit'>Publish</button>
                             </div>
 
                             @if(count($errors))

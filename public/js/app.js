@@ -2305,6 +2305,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2398,23 +2401,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['data'],
+  props: ['reply'],
   components: {
     Favorite: _Favorite_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
       editing: false,
-      id: this.data.id,
-      body: this.data.body,
+      id: this.reply.id,
+      body: this.reply.body,
       members: [],
-      isBest: this.data.isBest,
-      reply: this.data
+      isBest: this.reply.isBest
     };
   },
   computed: {
     ago: function ago() {
-      return moment__WEBPACK_IMPORTED_MODULE_1___default()(this.data.created_at).fromNow() + '...';
+      return moment__WEBPACK_IMPORTED_MODULE_1___default()(this.reply.created_at).fromNow() + '...';
     }
   },
   created: function created() {
@@ -2426,7 +2428,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     update: function update() {
-      axios.patch('/replies/' + this.data.id, {
+      axios.patch('/replies/' + this.reply.id, {
         body: this.body
       })["catch"](function (error) {
         flash(error.response.data, 'danger');
@@ -2435,13 +2437,13 @@ __webpack_require__.r(__webpack_exports__);
       flash('Updated!');
     },
     destroy: function destroy() {
-      axios["delete"]('/replies/' + this.data.id);
-      this.$emit('deleted', this.data.id);
+      axios["delete"]('/replies/' + this.reply.id);
+      this.$emit('deleted', this.reply.id);
     },
     markBestReply: function markBestReply() {
       var _this2 = this;
 
-      axios.post('/replies/' + this.data.id + '/best').then(function () {
+      axios.post('/replies/' + this.reply.id + '/best').then(function () {
         window.events.$emit('best-reply-selected', _this2.id); // emetto un evento globale
       });
     }
@@ -2546,15 +2548,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['initialRepliesCount'],
+  props: ['thread'],
   components: {
     Replies: _components_Replies_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     SubscribeButton: _components_SubscribeButton__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
-      repliesCount: this.initialRepliesCount
+      repliesCount: this.thread.replies_count,
+      locked: this.thread.locked
     };
+  },
+  methods: {
+    toggleLock: function toggleLock() {
+      var _this = this;
+
+      axios[this.locked ? 'delete' : 'post']('/locked-threads/' + this.thread.slug).then(function () {
+        _this.locked = !_this.locked;
+      });
+    }
   }
 });
 
@@ -60312,7 +60324,7 @@ var render = function() {
           { key: reply.id },
           [
             _c("reply", {
-              attrs: { data: reply },
+              attrs: { reply: reply },
               on: {
                 deleted: function($event) {
                   return _vm.remove(index)
@@ -60329,7 +60341,13 @@ var render = function() {
         on: { changed: _vm.fetch }
       }),
       _vm._v(" "),
-      _c("new-reply", { on: { created: _vm.add } })
+      _vm.$parent.locked
+        ? _c("p", [
+            _vm._v(
+              "\n    This thread has been locked. No more replies are allowed\n  "
+            )
+          ])
+        : _c("new-reply", { on: { created: _vm.add } })
     ],
     2
   )
@@ -60371,15 +60389,15 @@ var render = function() {
           [
             _c("h5", [
               _c("a", {
-                attrs: { href: "/profiles/" + _vm.data.owner.name },
-                domProps: { textContent: _vm._s(_vm.data.owner.name) }
+                attrs: { href: "/profiles/" + _vm.reply.owner.name },
+                domProps: { textContent: _vm._s(_vm.reply.owner.name) }
               }),
               _vm._v(" said "),
               _c("span", { domProps: { textContent: _vm._s(_vm.ago) } })
             ]),
             _vm._v(" "),
             _vm.signedIn
-              ? _c("favorite", { attrs: { reply: _vm.data } })
+              ? _c("favorite", { attrs: { reply: _vm.reply } })
               : _vm._e()
           ],
           1
@@ -60436,44 +60454,47 @@ var render = function() {
           : _c("div", { domProps: { innerHTML: _vm._s(_vm.body) } })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card-footer d-flex" }, [
-        _vm.authorize("updateReply", _vm.reply)
-          ? _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-xs mr-1",
-                  on: {
-                    click: function($event) {
-                      _vm.editing = true
-                    }
-                  }
-                },
-                [_vm._v("Edit")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-xs btn-danger mr-1",
-                  on: { click: _vm.destroy }
-                },
-                [_vm._v("Delete")]
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        !_vm.isBest
-          ? _c(
-              "button",
-              {
-                staticClass: "btn btn-xs btn-primary ml-auto",
-                on: { click: _vm.markBestReply }
-              },
-              [_vm._v("Best Reply?")]
-            )
-          : _vm._e()
-      ])
+      _vm.authorize("owns", _vm.reply) ||
+      (_vm.authorize("owns", _vm.reply.thread) && !_vm.isBest)
+        ? _c("div", { staticClass: "card-footer d-flex" }, [
+            _vm.authorize("owns", _vm.reply)
+              ? _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-xs mr-1",
+                      on: {
+                        click: function($event) {
+                          _vm.editing = true
+                        }
+                      }
+                    },
+                    [_vm._v("Edit")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-xs btn-danger mr-1",
+                      on: { click: _vm.destroy }
+                    },
+                    [_vm._v("Delete")]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.authorize("owns", _vm.reply.thread) && !_vm.isBest
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-xs btn-primary ml-auto",
+                    on: { click: _vm.markBestReply }
+                  },
+                  [_vm._v("Best Reply?")]
+                )
+              : _vm._e()
+          ])
+        : _vm._e()
     ]
   )
 }
@@ -72809,8 +72830,12 @@ var app = new Vue({
 var user = window.App.user; // Definisco le autorizzazioni, come se fosse una policy su laravel
 
 module.exports = {
-  updateReply: function updateReply(reply) {
-    return reply.user_id === user.id;
+  owns: function owns(model) {
+    var prop = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'user_id';
+    return model[prop] === user.id;
+  },
+  isAdmin: function isAdmin() {
+    return ['JohnDoe', 'JaneDoe', 'NicolaGaldiolo'].includes(user.name);
   }
 };
 
