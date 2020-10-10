@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-4">
     <div v-if="signedIn">
       <div class="form-group">
                 <textarea name="body"

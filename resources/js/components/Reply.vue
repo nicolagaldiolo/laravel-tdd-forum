@@ -71,7 +71,7 @@ export default {
   methods: {
     update() {
       axios.patch(
-          '/replies/' + this.reply.id, {
+          '/replies/' + this.id, {
             body: this.body
           })
           .catch(error => {
@@ -84,13 +84,13 @@ export default {
     },
 
     destroy() {
-      axios.delete('/replies/' + this.reply.id);
+      axios.delete('/replies/' + this.id);
 
-      this.$emit('deleted', this.reply.id);
+      this.$emit('deleted', this.id);
     },
 
     markBestReply() {
-      axios.post('/replies/' + this.reply.id + '/best').then(()=>{
+      axios.post('/replies/' + this.id + '/best').then(()=>{
         window.events.$emit('best-reply-selected', this.id) // emetto un evento globale
       });
     }

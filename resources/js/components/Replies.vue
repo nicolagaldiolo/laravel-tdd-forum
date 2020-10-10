@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-4">
     <div v-for="(reply, index) in items" :key="reply.id">
       <reply :reply="reply" @deleted="remove(index)"></reply>
     </div>
