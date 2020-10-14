@@ -6,11 +6,12 @@ use App\Events\ThreadReceivedNewReply;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 
 class Thread extends Model
 {
 
-    use RecordsActivity;
+    use RecordsActivity, Searchable;
 
     protected $guarded = [];
 
@@ -168,6 +169,19 @@ class Thread extends Model
     public function markBestReply(Reply $reply)
     {
         $this->update(['best_reply_id' => $reply->id]);
+    }
+
+    // LARAVEL SCOUT
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    // Ciò che viene inviato ad algolia è il risultato di questo metodo (presente nel trait searchable).
+    // Dato che ho bisogno di aggiungere anche il path della risorsa sovrascrivo il qui il metodo
+    public function toSearchableArray()
+    {
+        return $this->toArray() + ['path' => $this->path()];
     }
 
 }

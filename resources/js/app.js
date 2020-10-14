@@ -23,6 +23,7 @@ Vue.component('flash', require('./components/Flash.vue').default);
 Vue.component('paginator', require('./components/Paginator.vue').default);
 Vue.component('user-notification', require('./components/UserNotification.vue').default);
 Vue.component('avatar-form', require('./components/AvatarForm.vue').default);
+Vue.component('search', require('./components/Search.vue').default);
 
 Vue.component('thread-view', require('./pages/Threads.vue').default);
 

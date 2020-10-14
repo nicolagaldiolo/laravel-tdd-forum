@@ -1,5 +1,14 @@
 window._ = require('lodash');
 
+
+// installazione corretta:
+// npm install algoliasearch vue-instantsearch
+// npm install vue-server-renderer vue-router express webpack-merge --save
+// errore console: https://discourse.algolia.com/t/instantsearch-issues/10320/2
+import InstantSearch from 'vue-instantsearch';
+
+Vue.use(InstantSearch);
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This

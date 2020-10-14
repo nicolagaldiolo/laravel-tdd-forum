@@ -2,15 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc74aa90-7a0d-4e22-a3fc-29776b41d634" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/forum.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/forum.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RepliesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RepliesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ThreadsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ThreadsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Thread.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Thread.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/NewReply.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NewReply.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Replies.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Replies.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Reply.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Reply.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/Threads.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Threads.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/threads/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/threads/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Flash.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Flash.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/threads/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/threads/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,6 +152,8 @@
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
       <path value="$PROJECT_DIR$/vendor/predis/predis" />
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/laravel/scout" />
+      <path value="$PROJECT_DIR$/vendor/algolia/algoliasearch-client-php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1foBqjEGwePp6pXzAWcFjK1uI0Z" />
@@ -190,7 +197,7 @@
       <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.UpdateThreadsTest">
+  <component name="RunManager" selected="PHPUnit.SearchTest.testAUserCanSearchThreads">
     <configuration name="CreateThreadTest.test_a_thread_can_be_updated" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\CreateThreadTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/CreateThreadTest.php" method="test_a_thread_can_be_updated" scope="Method" />
       <method v="2" />
@@ -199,12 +206,12 @@
       <TestRunner class="Tests\Feature\CreateThreadTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/CreateThreadTest.php" method="test_a_thread_required_a_body_and_title_to_be_updated" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="CreateThreadTest.test_a_thread_with_a_title_that_ends_in_a_number_should_generate_the_proper_slug" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\CreateThreadTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/CreateThreadTest.php" method="test_a_thread_with_a_title_that_ends_in_a_number_should_generate_the_proper_slug" scope="Method" />
-      <method v="2" />
-    </configuration>
     <configuration name="CreateThreadTest.test_unauthorized_user_may_not_updated_threads" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\CreateThreadTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/CreateThreadTest.php" method="test_unauthorized_user_may_not_updated_threads" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SearchTest.testAUserCanSearchThreads" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\SearchTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/SearchTest.php" method="testAUserCanSearchThreads" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="UpdateThreadsTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -217,19 +224,19 @@
     </configuration>
     <list>
       <item itemvalue="PHPUnit.phpunit.xml" />
-      <item itemvalue="PHPUnit.CreateThreadTest.test_a_thread_with_a_title_that_ends_in_a_number_should_generate_the_proper_slug" />
       <item itemvalue="PHPUnit.CreateThreadTest.test_a_thread_can_be_updated" />
       <item itemvalue="PHPUnit.CreateThreadTest.test_a_thread_required_a_body_and_title_to_be_updated" />
       <item itemvalue="PHPUnit.CreateThreadTest.test_unauthorized_user_may_not_updated_threads" />
       <item itemvalue="PHPUnit.UpdateThreadsTest" />
+      <item itemvalue="PHPUnit.SearchTest.testAUserCanSearchThreads" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.SearchTest.testAUserCanSearchThreads" />
         <item itemvalue="PHPUnit.UpdateThreadsTest" />
         <item itemvalue="PHPUnit.CreateThreadTest.test_unauthorized_user_may_not_updated_threads" />
         <item itemvalue="PHPUnit.CreateThreadTest.test_a_thread_can_be_updated" />
         <item itemvalue="PHPUnit.CreateThreadTest.test_a_thread_required_a_body_and_title_to_be_updated" />
-        <item itemvalue="PHPUnit.CreateThreadTest.test_a_thread_with_a_title_that_ends_in_a_number_should_generate_the_proper_slug" />
       </list>
     </recent_temporary>
   </component>
@@ -265,7 +272,8 @@
       <workItem from="1601966802128" duration="29081000" />
       <workItem from="1602043998940" duration="6286000" />
       <workItem from="1602237291818" duration="19509000" />
-      <workItem from="1602316880222" duration="6295000" />
+      <workItem from="1602316880222" duration="18115000" />
+      <workItem from="1602559145602" duration="21206000" />
     </task>
     <servers />
   </component>
@@ -334,33 +342,33 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1035" y="585" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599907714079" />
-    <state width="1398" height="271" key="GridCell.Tab.0.bottom" timestamp="1602318864082">
+    <state width="1398" height="183" key="GridCell.Tab.0.bottom" timestamp="1602357653803">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="222" key="GridCell.Tab.0.bottom/0.23.1440.877/-544.-1417.2560.1417/-1984.-583.1440.877@0.23.1440.877" timestamp="1602052791029" />
     <state width="1398" height="259" key="GridCell.Tab.0.bottom/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1602262844407" />
-    <state width="1398" height="271" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1602318864082" />
+    <state width="1398" height="183" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1602357653803" />
     <state width="2518" height="502" key="GridCell.Tab.0.bottom/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563548" />
-    <state width="1398" height="271" key="GridCell.Tab.0.center" timestamp="1602318864081">
+    <state width="1398" height="183" key="GridCell.Tab.0.center" timestamp="1602357653802">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="222" key="GridCell.Tab.0.center/0.23.1440.877/-544.-1417.2560.1417/-1984.-583.1440.877@0.23.1440.877" timestamp="1602052791027" />
     <state width="1398" height="259" key="GridCell.Tab.0.center/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1602262844406" />
-    <state width="1398" height="271" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1602318864081" />
+    <state width="1398" height="183" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1602357653802" />
     <state width="2518" height="502" key="GridCell.Tab.0.center/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563547" />
-    <state width="1398" height="271" key="GridCell.Tab.0.left" timestamp="1602318864081">
+    <state width="1398" height="183" key="GridCell.Tab.0.left" timestamp="1602357653801">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="222" key="GridCell.Tab.0.left/0.23.1440.877/-544.-1417.2560.1417/-1984.-583.1440.877@0.23.1440.877" timestamp="1602052791027" />
     <state width="1398" height="259" key="GridCell.Tab.0.left/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1602262844405" />
-    <state width="1398" height="271" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1602318864081" />
+    <state width="1398" height="183" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1602357653801" />
     <state width="2518" height="502" key="GridCell.Tab.0.left/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563547" />
-    <state width="1398" height="271" key="GridCell.Tab.0.right" timestamp="1602318864082">
+    <state width="1398" height="183" key="GridCell.Tab.0.right" timestamp="1602357653803">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="222" key="GridCell.Tab.0.right/0.23.1440.877/-544.-1417.2560.1417/-1984.-583.1440.877@0.23.1440.877" timestamp="1602052791028" />
     <state width="1398" height="259" key="GridCell.Tab.0.right/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1602262844406" />
-    <state width="1398" height="271" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1602318864082" />
+    <state width="1398" height="183" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1602357653803" />
     <state width="2518" height="502" key="GridCell.Tab.0.right/2560.353.1440.877/0.23.2560.1417/-1440.697.1440.877@0.23.2560.1417" timestamp="1599838563548" />
     <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1600842712916">
       <screen x="0" y="23" width="1440" height="877" />
@@ -405,6 +413,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="450" y="200" width="549" height="524" key="StructurePopup/0.23.1440.877/-549.-1417.2560.1417/-1989.-672.1440.877@0.23.1440.877" timestamp="1600506688179" />
+    <state x="531" y="383" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602604834521">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="531" y="383" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877/-571.-1417.2560.1417@0.23.1440.877" timestamp="1602604834521" />
     <state x="400" y="201" width="837" height="640" key="find.popup" timestamp="1602319221931">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
