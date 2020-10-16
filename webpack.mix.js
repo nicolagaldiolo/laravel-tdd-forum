@@ -16,4 +16,5 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.styles([
     'node_modules/tributejs/dist/tribute.css',
+    'node_modules/trix/dist/trix.css',
 ], 'public/css/vendor.css');

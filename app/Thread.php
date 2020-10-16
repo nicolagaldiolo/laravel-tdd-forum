@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
+use Stevebauman\Purify\Facades\Purify;
 
 class Thread extends Model
 {
@@ -182,6 +183,14 @@ class Thread extends Model
     public function toSearchableArray()
     {
         return $this->toArray() + ['path' => $this->path()];
+    }
+
+    public function getBodyAttribute($body)
+    {
+        // Dato che per le descrizioni permetto l'uso di tag html devo però vietare che venga iniettato codice javascript malevolo,
+        // perciò utilizzo una libreria che mi permette di accettare alcuni tag e vietarne altri
+
+        return Purify::clean($body);
     }
 
 }

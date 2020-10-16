@@ -154,6 +154,13 @@ class ThreadTest extends TestCase
         });
     }
 
+    public function testAThreadsBodyIsSanitizedAutomatically()
+    {
+        $thread = make(Thread::class, ['body' => '<script>alert("bad")</script><p>This is okay.</p>']);
+
+        $this->assertEquals('<p>This is okay.</p>', $thread->body);
+    }
+
     /*
      * Creare una classe dedicata e utilizzare Redis per gestire il conteggio delle visite ha senso solo
      * se abbiamo tantissime visite e dobbiamo risparmiare un interrogazione a db. Per questo motivo ho

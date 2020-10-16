@@ -2,13 +2,7 @@
   <div class="mt-4">
     <div v-if="signedIn">
       <div class="form-group">
-                <textarea name="body"
-                          id="body"
-                          class="form-control"
-                          placeholder="Have something to say?"
-                          rows="5"
-                          required
-                          v-model="body"></textarea>
+        <wysiwyg v-model="body" placeholder="Have something to say?" :shouldClear="completed"></wysiwyg>
       </div>
 
       <button type="submit"
@@ -30,7 +24,8 @@ import Tribute from "tributejs";
 export default {
   data() {
     return {
-      body: ''
+      body: '',
+      completed: false
     };
   },
 
@@ -71,12 +66,13 @@ export default {
 
   methods: {
     addReply() {
+
       axios.post(location.pathname + '/replies', { body: this.body })
           .catch( error =>{
             flash(error.response.data, 'danger');
           })
           .then(({data}) => {
-            this.body = '';
+            this.completed = true;
             flash('Your reply has been posted.');
 
             this.$emit('created', data);

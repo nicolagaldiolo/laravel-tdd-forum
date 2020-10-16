@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Stevebauman\Purify\Facades\Purify;
 
 class Reply extends Model
 {
@@ -76,6 +77,14 @@ class Reply extends Model
     public function getIsBestAttribute()
     {
         return $this->isBest();
+    }
+
+    public function getBodyAttribute($body)
+    {
+        // Dato che per le descrizioni permetto l'uso di tag html devo però vietare che venga iniettato codice javascript malevolo,
+        // perciò utilizzo una libreria che mi permette di accettare alcuni tag e vietarne altri
+
+        return Purify::clean($body);
     }
 
 }
